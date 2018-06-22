@@ -23,6 +23,13 @@ public class RentDVDDialog extends Dialog implements ActionListener {
     private SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
     private String dateEntered;
 
+    private int monthRented;
+    private int dayRented;
+    private int yearRented;
+    private int monthDue;
+    private int dayDue;
+    private int yearDue;
+
     private DVD unit;
 
     public RentDVDDialog(JFrame parent, DVD d) {
@@ -94,66 +101,9 @@ public class RentDVDDialog extends Dialog implements ActionListener {
         // if OK clicked then fill the object
         if (clicked == okButton) {
 
-            if(renterTxt.getText().equals("")){
+            //if the input is all correct, save info to the object, else don't
+            closeStatus = inputCheck();
 
-                JOptionPane.showMessageDialog(null,
-                        "Please enter renter's name",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
-                        closeStatus = false;
-
-            } else if(titleTxt.getText().equals("")){
-
-                JOptionPane.showMessageDialog(null,
-                        "Please enter DVD's title",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
-                closeStatus = false;
-
-            } else if(rentedOnTxt.getText().equals("")){
-
-                JOptionPane.showMessageDialog(null,
-                        "Please enter the date rented on",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
-                closeStatus = false;
-
-            } else if(DueBackTxt.getText().equals("")){
-
-                JOptionPane.showMessageDialog(null,
-                        "Please enter the returning date",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
-                closeStatus = false;
-
-            } else {
-
-                // save the information in the object
-                closeStatus = true;
-
-                //try to save the rent and due back
-                try {
-                    dateEntered = rentedOnTxt.getText();
-                    unit.setBought(DATE_FORMAT.parse(dateEntered));
-
-                } catch (ParseException p) {
-                    System.out.println("Could'nt convert date to string");
-                } catch (NullPointerException p) {
-                    System.out.println("String was empty");
-                }
-
-                try {
-                    dateEntered = DueBackTxt.getText();
-                    unit.setDueBack(DATE_FORMAT.parse(dateEntered));
-
-                } catch (ParseException p) {
-                    System.out.println("Could'nt convert date to string");
-                } catch (NullPointerException p) {
-                    System.out.println("String was empty");
-                }
-
-                unit.setNameOfRenter(renterTxt.getText());
-                unit.setTitle(titleTxt.getText());
-
-                //If all of the information is correct, make the dialog disappear
-                dispose();
-            }
         }
         else if(clicked == cancelButton){
 
@@ -167,7 +117,152 @@ public class RentDVDDialog extends Dialog implements ActionListener {
 
     }
 
-    public boolean closeOK() {
+    private boolean inputCheck(){
+
+        if(renterTxt.getText().equals("")){
+
+            JOptionPane.showMessageDialog(null,
+                    "Please enter renter's name",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        } else if(titleTxt.getText().equals("")){
+
+            JOptionPane.showMessageDialog(null,
+                    "Please enter DVD's title",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        } else if(rentedOnTxt.getText().equals("")){
+
+            JOptionPane.showMessageDialog(null,
+                    "Please enter the date rented on",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        } else if(DueBackTxt.getText().equals("")){
+
+            JOptionPane.showMessageDialog(null,
+                    "Please enter the due back date",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        } else {
+
+            unit.setNameOfRenter(renterTxt.getText());
+            unit.setTitle(titleTxt.getText());
+
+
+            Date temp;
+
+            //try to save the rent and due back
+            try {
+                dateEntered = rentedOnTxt.getText();
+
+                temp = DATE_FORMAT.parse(dateEntered);
+
+                if(!checkDateRented(dateEntered)){
+                    return false;
+                }
+
+                unit.setBought(temp);
+
+            } catch (ParseException p) {
+                JOptionPane.showMessageDialog(null,
+                        "Date rented on is incorrect",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try {
+                dateEntered = DueBackTxt.getText();
+
+                temp = DATE_FORMAT.parse(dateEntered);
+
+                if(!checkDateDue(dateEntered)){
+                    return false;
+                }
+
+                unit.setDueBack(temp);
+
+            } catch (ParseException p) {
+                JOptionPane.showMessageDialog(null,
+                        "Due back date is incorrect",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            //If all of the information is correct, make the dialog disappear
+            dispose();
+
+            return true;
+        }
+    }
+
+    private boolean checkDateRented(String dateRented){
+
+        String[] s = dateRented.split("/");
+
+        monthRented = Integer.parseInt(s[0]);
+        dayRented = Integer.parseInt(s[1]);
+        yearRented = Integer.parseInt(s[2]);
+
+        if(monthRented < 0 || monthRented > 12){
+            JOptionPane.showMessageDialog(null,
+                    "Month rented on is incorrect",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (dayRented < 0 || dayRented > 31){
+            JOptionPane.showMessageDialog(null,
+                    "Day rented on is incorrect",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    private boolean checkDateDue(String dateDue){
+
+        String[] s = dateDue.split("/");
+
+        monthDue = Integer.parseInt(s[0]);
+        dayDue = Integer.parseInt(s[1]);
+        yearDue = Integer.parseInt(s[2]);
+
+        if(monthDue < 0 || monthDue > 12){
+            JOptionPane.showMessageDialog(null,
+                    "Month Due back is incorrect",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (dayDue < 0 || dayDue > 31){
+            JOptionPane.showMessageDialog(null,
+                    "Day Due back is incorrect",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if(yearDue < yearRented){
+            JOptionPane.showMessageDialog(null,
+                    "Due date can't be before rented date",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (yearDue == yearRented && monthDue < monthRented){
+            JOptionPane.showMessageDialog(null,
+                    "Due date can't be before rented date",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (yearDue == yearRented && monthDue == monthRented && dayDue < dayRented){
+            JOptionPane.showMessageDialog(null,
+                    "Due date can't be before rented date",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    private boolean closeOK() {
         return closeStatus;
     }
 }
