@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c06e6d48-6f94-43ed-9264-22f4513dac19" name="Default" comment="" />
+    <list default="true" id="c06e6d48-6f94-43ed-9264-22f4513dac19" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/rentalStorePrj/Dialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RentalStorePrj UML.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/RentalStorePrj UML.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/DVD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/DVD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentDVDDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentDVDDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentalStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentalStore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentalStoreGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentalStoreGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/DVD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/DVD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,19 +23,37 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="DVD.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/DVD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="196">
+              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="docComment;field#bought#0;class#DVD#0" />
                 <element signature="docComment;field#dueBack#0;class#DVD#0" />
                 <element signature="docComment;field#title#0;class#DVD#0" />
                 <element signature="docComment;field#nameOfRenter#0;class#DVD#0" />
                 <element signature="method#DVD#0;class#DVD#0" />
-                <element signature="method#DVD#1;class#DVD#0" />
+                <element signature="e#1083#1084#0" expanded="true" />
+                <element signature="e#1108#1109#0" expanded="true" />
+                <element signature="e#1223#1224#0" expanded="true" />
+                <element signature="e#1262#1263#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RentDVDDialog.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="154" column="26" selection-start-line="154" selection-start-column="26" selection-end-line="154" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4358#4359#0" expanded="true" />
+                <element signature="e#4392#4393#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,25 +68,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RentDVDDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java">
+      <file leaf-file-name="RentalStoreGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+            <state relative-caret-position="448">
+              <caret line="129" column="13" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
               <folding>
-                <element signature="method#RentDVDDialog#0;class#RentDVDDialog#0" />
+                <element signature="e#4057#4058#0" expanded="true" />
+                <element signature="e#4084#4085#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RentalStoreGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java">
+      <file leaf-file-name="Dialog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Dialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-586">
-              <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+            <state relative-caret-position="75">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
               <folding>
-                <element signature="method#RentalStoreGUI#0;class#RentalStoreGUI#0" />
+                <element signature="e#139#140#0" expanded="true" />
+                <element signature="e#159#160#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,12 +97,11 @@
       <file leaf-file-name="RentalStore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="375">
+              <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
               <folding>
-                <element signature="method#add#0;class#RentalStore#0" />
+                <element signature="e#443#444#0" expanded="true" />
                 <element signature="e#472#473#0" expanded="true" />
-                <element signature="method#getElementAt#0;class#RentalStore#0" />
                 <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
                 <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
               </folding>
@@ -78,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerType.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -90,9 +121,10 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+            <state relative-caret-position="165">
+              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding>
+                <element signature="e#238#239#0" expanded="true" />
                 <element signature="e#267#268#0" expanded="true" />
                 <element signature="e#315#316#0" expanded="true" />
                 <element signature="e#351#352#0" expanded="true" />
@@ -103,13 +135,27 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java" />
-        <option value="$PROJECT_DIR$/src/rentalStorePrj/DVD.java" />
         <option value="$PROJECT_DIR$/src/rentalStorePrj/Game.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/DVD.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/TestingDialog.java" />
         <option value="$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/Dialog.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java" />
       </list>
     </option>
   </component>
@@ -117,6 +163,7 @@
     <option name="width" value="1280" />
     <option name="height" value="800" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -144,9 +191,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="RunDashboard">
@@ -161,9 +208,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.RentalStoreGUI">
     <configuration name="RentalStoreGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rentalStorePrj.RentalStoreGUI" />
+      <module name="RentalStorePrj" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="rentalStorePrj.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="TestingDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="rentalStorePrj.TestingDialog" />
       <module name="RentalStorePrj" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -214,9 +272,14 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Application.RentalStoreGUI" />
+      <item itemvalue="Application.TestingDialog" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.RentalStoreGUI" />
+        <item itemvalue="Application.TestingDialog" />
       </list>
     </recent_temporary>
   </component>
@@ -237,31 +300,31 @@
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.328877" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
+      <window_info anchor="bottom" id="Messages" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22058824" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info id="Learn" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39973262" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
@@ -269,12 +332,80 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/DVD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;field#bought#0;class#DVD#0" />
+            <element signature="docComment;field#dueBack#0;class#DVD#0" />
+            <element signature="docComment;field#title#0;class#DVD#0" />
+            <element signature="docComment;field#nameOfRenter#0;class#DVD#0" />
+            <element signature="method#DVD#0;class#DVD#0" />
+            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1223#1224#0" expanded="true" />
+            <element signature="e#1262#1263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentGameDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4358#4359#0" expanded="true" />
+            <element signature="e#4392#4393#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+          <folding>
+            <element signature="e#4057#4058#0" expanded="true" />
+            <element signature="e#4084#4085#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#443#444#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
+            <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding>
+            <element signature="e#238#239#0" expanded="true" />
             <element signature="e#267#268#0" expanded="true" />
             <element signature="e#315#316#0" expanded="true" />
             <element signature="e#351#352#0" expanded="true" />
@@ -282,17 +413,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="e#238#239#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#315#316#0" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaCaret.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaTextFieldUI.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="141" selection-start-line="141" selection-end-line="141" />
+          <folding>
+            <element signature="e#907#908#0" expanded="true" />
+            <element signature="e#951#952#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/TestingDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/DVD.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="196">
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;field#bought#0;class#DVD#0" />
             <element signature="docComment;field#dueBack#0;class#DVD#0" />
             <element signature="docComment;field#title#0;class#DVD#0" />
             <element signature="docComment;field#nameOfRenter#0;class#DVD#0" />
             <element signature="method#DVD#0;class#DVD#0" />
-            <element signature="method#DVD#1;class#DVD#0" />
+            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1223#1224#0" expanded="true" />
+            <element signature="e#1262#1263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding>
+            <element signature="e#443#444#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
+            <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
           </folding>
         </state>
       </provider>
@@ -304,44 +507,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-          <folding>
-            <element signature="method#RentDVDDialog#0;class#RentDVDDialog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-586">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+        <state relative-caret-position="448">
+          <caret line="129" column="13" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
           <folding>
-            <element signature="method#RentalStoreGUI#0;class#RentalStoreGUI#0" />
+            <element signature="e#4057#4058#0" expanded="true" />
+            <element signature="e#4084#4085#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="method#add#0;class#RentalStore#0" />
-            <element signature="e#472#473#0" expanded="true" />
-            <element signature="method#getElementAt#0;class#RentalStore#0" />
-            <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
-            <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java">
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Dialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#139#140#0" expanded="true" />
+            <element signature="e#159#160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="154" column="26" selection-start-line="154" selection-start-column="26" selection-end-line="154" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4358#4359#0" expanded="true" />
+            <element signature="e#4392#4393#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

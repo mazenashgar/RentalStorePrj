@@ -2,16 +2,17 @@ package rentalStorePrj;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
+import java.util.Date;
 
 public class DVD implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	/** The date the DVD was rented */
-	protected GregorianCalendar bought;
+	protected Date bought;
 
 	/** The DVD is the DVD is due back */
-	protected GregorianCalendar dueBack;
+	protected Date dueBack;
 
 	/** The title of the DVD */
 	protected String title;
@@ -22,7 +23,7 @@ public class DVD implements Serializable {
 	public DVD() {
 	}
 
-	public DVD(GregorianCalendar bought, GregorianCalendar dueBack, String title, String name) {
+	public DVD(Date bought, Date dueBack, String title, String name) {
 		super();
 		this.bought = bought;
 		this.dueBack = dueBack;
@@ -30,19 +31,19 @@ public class DVD implements Serializable {
 		this.nameOfRenter = name;
 	}
 
-	public GregorianCalendar getBought() {
+	public Date getBought() {
 		return bought;
 	}
 	
-	public void setBought(GregorianCalendar bought) {
+	public void setBought(Date bought) {
 		this.bought = bought;
 	}
 	
-	public GregorianCalendar getDueBack() {
+	public Date getDueBack() {
 		return dueBack;
 	}
 	
-	public void setDueBack(GregorianCalendar dueBack) {
+	public void setDueBack(Date dueBack) {
 		this.dueBack = dueBack;
 	}
 

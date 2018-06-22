@@ -34,6 +34,8 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 	/** Holds the list engine */
 	private RentalStore list;
 
+	private Dialog dialog;
+
 	/** Holds JListArea */
 	private JList JListArea;
 
@@ -122,7 +124,10 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		if (e.getSource() == rentDVD) {
 			DVD dvd = new DVD();
 			RentDVDDialog dialog = new RentDVDDialog(this, dvd);
-			list.add(dvd);
+
+			if(dialog.closeOK()) {
+                list.add(dvd);
+            }
 		}
 
 		if (returnItem == e.getSource()) {

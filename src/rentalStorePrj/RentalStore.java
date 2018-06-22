@@ -3,6 +3,7 @@ package rentalStorePrj;
 import javax.swing.*;
 import java.io.*;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class RentalStore extends AbstractListModel {
@@ -30,12 +31,17 @@ public class RentalStore extends AbstractListModel {
 
 			//return "Happy";
 
+		SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+
 		DVD unit = listDVDs.get(arg0);
 
 		//		String rentedOnDateStr = DateFormat.getDateInstance(DateFormat.SHORT)
 		//				.format(unit.getRentedOn().getTime());
 
-		String line = "Name: " + " " + listDVDs.get(arg0).getNameOfRenter();
+		String line = "Name: " + listDVDs.get(arg0).getNameOfRenter()
+			+ "\t\t" + "DVD: " + listDVDs.get(arg0).getTitle()
+                + "\t\t" + "Rented: " + (df.format(listDVDs.get(arg0).getBought()))
+                + "\t\t" + "Due Date: " + (df.format(listDVDs.get(arg0).getDueBack()));
 
 		//		if (unit instanceof Game)
 		//			line += ", Car Player: " + ((Game)unit).getPlayer();
