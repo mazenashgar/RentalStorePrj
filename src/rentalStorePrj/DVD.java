@@ -102,19 +102,47 @@ public class DVD implements Serializable {
 
 	protected void setReturnDate (String returnedOn, String dueDate){
 
-        returnedDate = returnedOn.split("/");
-
-        monthReturned = Integer.parseInt(returnedDate[0]);
-        dayReturned = Integer.parseInt(returnedDate[1]);
-        yearReturned = Integer.parseInt(returnedDate[2]);
-
+        checkReturnDate(returnedOn);
 
         due = dueDate.split("/");
 
         monthDue = Integer.parseInt(due[0]);
         dayDue = Integer.parseInt(due[1]);
         yearDue = Integer.parseInt(due[2]);
+
     }
 
+	protected boolean checkReturnDate(String dateReturned){
 
+        returnedDate = dateReturned.split("/");
+
+        monthReturned = Integer.parseInt(returnedDate[0]);
+        dayReturned = Integer.parseInt(returnedDate[1]);
+        yearReturned = Integer.parseInt(returnedDate[2]);
+
+        String rentedDate = DATE_FORMAT.format(getBought());
+        String[] rented = rentedDate.split("/");
+
+        int monthRented = Integer.parseInt(rented[0]);
+        int dayRented = Integer.parseInt(rented[1]);
+        int yearRented = Integer.parseInt(rented[2]);
+
+        if(yearRented < 1){
+            return false;
+        }
+        if(monthReturned > 12 || monthReturned < 1){
+            return false;
+        }else if(dayReturned > 31 || dayReturned < 1){
+            return false;
+        }
+
+        if(yearRented > yearReturned){
+            return false;
+        }else if (monthRented > monthReturned){
+            return false;
+        }else if(dayRented > dayReturned){
+            return false;
+        }
+        return true;
+	}
 }

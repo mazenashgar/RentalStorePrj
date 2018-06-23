@@ -32,16 +32,26 @@ public class Dialog extends JDialog {
 
         String[] s = dateRented.split("/");
 
-        monthRented = Integer.parseInt(s[0]);
-        dayRented = Integer.parseInt(s[1]);
-        yearRented = Integer.parseInt(s[2]);
+        try {
+            monthRented = Integer.parseInt(s[0]);
+            dayRented = Integer.parseInt(s[1]);
+            yearRented = Integer.parseInt(s[2]);
+        }catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null,
+                    "Please check your inputs" +
+                            "\n\nNOTE: The dates can only contain numbers" +
+                            "\n**No letters or special characters**",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
 
-        if(monthRented < 0 || monthRented > 12){
+
+        if(monthRented < 1 || monthRented > 12){
             JOptionPane.showMessageDialog(null,
                     "Month rented on is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
             return false;
-        } else if (dayRented < 0 || dayRented > 31){
+        } else if (dayRented < 1 || dayRented > 31){
             JOptionPane.showMessageDialog(null,
                     "Day rented on is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -55,17 +65,25 @@ public class Dialog extends JDialog {
     protected boolean checkDateDue(String dateDue){
 
         String[] s = dateDue.split("/");
+        try{
+            monthDue = Integer.parseInt(s[0]);
+            dayDue = Integer.parseInt(s[1]);
+            yearDue = Integer.parseInt(s[2]);
+        }catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null,
+                    "Please check your inputs" +
+                            "\n\nNOTE: The dates can only contain numbers" +
+                            "\n**No letters or special characters**",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
 
-        monthDue = Integer.parseInt(s[0]);
-        dayDue = Integer.parseInt(s[1]);
-        yearDue = Integer.parseInt(s[2]);
-
-        if(monthDue < 0 || monthDue > 12){
+        if(monthDue < 1 || monthDue > 12){
             JOptionPane.showMessageDialog(null,
                     "Month Due back is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
             return false;
-        } else if (dayDue < 0 || dayDue > 31){
+        } else if (dayDue < 1 || dayDue > 31){
             JOptionPane.showMessageDialog(null,
                     "Day Due back is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE);

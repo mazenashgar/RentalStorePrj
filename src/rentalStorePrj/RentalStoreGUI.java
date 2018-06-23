@@ -92,7 +92,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		add(JListArea);
 
 		setVisible(true);
-		setSize(500, 400);
+		setSize(700, 800);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -162,28 +162,42 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 
 		if (returnItem == e.getSource()) {
 
-
-			GregorianCalendar date = new GregorianCalendar();
-			String inputDate = JOptionPane.showInputDialog("Enter return date: ");
-			SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            GregorianCalendar date = new GregorianCalendar();
+            String inputDate = JOptionPane.showInputDialog("Enter return date: " +
+                    "\nPlease use the following format: MM/DD/YYYY");
+            SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
             NumberFormat numFormatter = NumberFormat.getCurrencyInstance(Locale.US);
-			try {
-				Date newDate = df.parse(inputDate);
-				date.setTime(newDate);
-			}
-			catch (ParseException pe){
-				System.out.println("Could not parse input date!");
-			}
 
-			try {
+                try {
+                    if (inputDate != null) {
+                        Date newDate = df.parse(inputDate);
+                        date.setTime(newDate);
+                    }
+                    else {
+                        return;
+                    }
+                } catch (ParseException pe) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid date to return");
+                    return;
+                }
+
+            try {
                 int index = JListArea.getSelectedIndex();
                 DVD unit = list.get(index);
 
-                JOptionPane.showMessageDialog(null, "Thanks " + unit.getNameOfRenter() +
-                        " for returning " + unit.getTitle() + "\nYou owe: " + numFormatter.format(unit.getCost(date)) +
-                        " dollars");
 
-                list.remove(unit, index);
+                if(unit.checkReturnDate(inputDate)) {
+                    double cost = unit.getCost(date);
+                    JOptionPane.showMessageDialog(null, "Thanks" + unit.getNameOfRenter() +
+                            " for returning " + unit.getTitle() + "\nYou owe: " + numFormatter.format(cost) +
+                            " dollars");
+
+                    list.remove(unit, index);
+                }else{
+                    JOptionPane.showMessageDialog(null,
+                            "Return date is incorrect or it is before the rented on Date");
+                    return;
+                }
 
             }catch(ArrayIndexOutOfBoundsException a){
                 JOptionPane.showMessageDialog(null, "Please select a unit to return it");

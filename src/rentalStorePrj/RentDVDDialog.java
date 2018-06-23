@@ -52,7 +52,7 @@ public class RentDVDDialog extends Dialog implements ActionListener {
         c.add(Calendar.DATE, 1);  // number of days to add
         date = c.getTime();
 
-        textPanel.add(new JLabel("Due Back: "));
+        textPanel.add(new JLabel("Due Back Date: "));
         DueBackTxt = new JTextField(DATE_FORMAT.format(date),15);
         textPanel.add(DueBackTxt);
 
@@ -148,7 +148,7 @@ public class RentDVDDialog extends Dialog implements ActionListener {
 
             } catch (ParseException p) {
                 JOptionPane.showMessageDialog(null,
-                        "Date rented on is incorrect",
+                        "Rented on date is incorrect",
                         "ERROR", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
