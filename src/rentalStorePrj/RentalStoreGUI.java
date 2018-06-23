@@ -3,10 +3,12 @@ package rentalStorePrj;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class RentalStoreGUI extends JFrame implements ActionListener {
 
@@ -31,13 +33,13 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 	private JMenuItem rentGame;
 	private JMenuItem returnItem;
 
-	/** Holds the list engine */
+    /** Holds the list engine */
 	private RentalStore list;
-
-	private Dialog dialog;
 
 	/** Holds JListArea */
 	private JList JListArea;
+
+	private NumberFormat numformatter = NumberFormat.getCurrencyInstance(Locale.US);
 
 	/** Scroll pane */
 	//private JScrollPane scrollList;
@@ -48,9 +50,9 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		menus = new JMenuBar();
 		fileMenu = new JMenu("File");
 		actionMenu = new JMenu("Action");
-		openSerItem = new JMenuItem("Open File");
+		openSerItem = new JMenuItem("Open Serial");
 		exitItem = new JMenuItem("Exit");
-		saveSerItem = new JMenuItem("Save File");
+		saveSerItem = new JMenuItem("Save Serial");
 		openTextItem = new JMenuItem("Open Text");
 		saveTextItem = new JMenuItem("Save Text");
 		rentDVD = new JMenuItem("Rent DVD");
@@ -58,7 +60,9 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		returnItem = new JMenuItem("Return");
 
 		//adding items to bar
+        fileMenu.add(openTextItem);
 		fileMenu.add(openSerItem);
+		fileMenu.add(saveTextItem);
 		fileMenu.add(saveSerItem);
 		fileMenu.add(exitItem);
 		actionMenu.add(rentDVD);
@@ -69,12 +73,15 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		menus.add(actionMenu);
 
 		//adding actionListener
+        openTextItem.addActionListener(this);
 		openSerItem.addActionListener(this);
+		saveTextItem.addActionListener(this);
 		saveSerItem.addActionListener(this);
 		exitItem.addActionListener(this);
 		rentDVD.addActionListener(this);
 		rentGame.addActionListener(this);
 		returnItem.addActionListener(this);
+
 
 		setJMenuBar(menus);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,21 +90,16 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		list = new RentalStore();
 		JListArea = new JList(list);
 		add(JListArea);
-		//	JListArea.setVisible(true);
 
 		setVisible(true);
-		setSize(400, 400);
-		//		setSize(new Dimension (550,400));
-		//		setMinimumSize(new Dimension(550,400));
-		//		setMaximumSize(new Dimension(550,400));
-
+		setSize(500, 400);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 
 		Object comp = e.getSource();
 
-		if (openSerItem == comp || openTextItem == comp) {
+		if (openSerItem == comp) {
 			JFileChooser chooser = new JFileChooser();
 			int status = chooser.showOpenDialog(null);
 			if (status == JFileChooser.APPROVE_OPTION) {
@@ -107,7 +109,17 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 			}
 		}
 
-		if (saveSerItem == comp || saveTextItem == comp) {
+		if(openTextItem == comp){
+            JFileChooser chooser = new JFileChooser();
+            int status = chooser.showOpenDialog(null);
+            if (status == JFileChooser.APPROVE_OPTION) {
+                String filename = chooser.getSelectedFile().getAbsolutePath();
+                if (openTextItem == comp)
+                    list.loadFromText(filename);
+            }
+        }
+
+		if (saveSerItem == comp) {
 			JFileChooser chooser = new JFileChooser();
 			int status = chooser.showSaveDialog(null);
 			if (status == JFileChooser.APPROVE_OPTION) {
@@ -116,6 +128,16 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 					list.saveAsSerializable(filename);
 			}
 		}
+
+		if(saveTextItem == comp){
+            JFileChooser chooser = new JFileChooser();
+            int status = chooser.showSaveDialog(null);
+            if (status == JFileChooser.APPROVE_OPTION) {
+                String filename = chooser.getSelectedFile().getAbsolutePath();
+                if (saveTextItem == e.getSource())
+                    list.saveAsText(filename);
+            }
+        }
 
 		//MenuBar options
 		if (e.getSource() == exitItem) {
@@ -129,9 +151,17 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
                 list.add(dvd);
             }
 		}
+		if(e.getSource() == rentGame){
+		    Game game = new Game();
+		    RentGameDialog dialog = new RentGameDialog(this, game);
+
+		    if(dialog.closeOK()){
+		        list.add(game);
+            }
+        }
 
 		if (returnItem == e.getSource()) {
-			int index = JListArea.getSelectedIndex();
+
 
 			GregorianCalendar date = new GregorianCalendar();
 			String inputDate = JOptionPane.showInputDialog("Enter return date: ");
@@ -144,15 +174,23 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 				System.out.println("Could not parse input date!");
 			}
 
-			DVD unit = list.get(index);
-			JOptionPane.showMessageDialog(null, "Thanks " + unit.getNameOfRenter() +
-					" for returning " + unit.getTitle() + ", you owe: " + unit.getCost(date) +
-					" dollars");
+			try {
+                int index = JListArea.getSelectedIndex();
+                DVD unit = list.get(index);
+
+                JOptionPane.showMessageDialog(null, "Thanks " + unit.getNameOfRenter() +
+                        " for returning " + unit.getTitle() + "\nYou owe: " + numformatter.format(unit.getCost(date)) +
+                        " dollars");
+
+                list.remove(unit, index);
+
+            }catch(ArrayIndexOutOfBoundsException a){
+                JOptionPane.showMessageDialog(null, "Please select a unit to return it");
+            }
 		}
 	}
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		new RentalStoreGUI();
 	}
-
 }
