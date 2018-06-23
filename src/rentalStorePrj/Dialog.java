@@ -28,8 +28,6 @@ public class Dialog extends JDialog {
         super(parent, model);
     }
 
-
-
     protected boolean checkDateRented(String dateRented){
 
         String[] s = dateRented.split("/");

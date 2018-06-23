@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Calendar;
 
 public class DVD implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-    SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+    protected SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
 	/** The date the DVD was rented */
 	protected Date bought;
@@ -30,8 +29,11 @@ public class DVD implements Serializable {
     protected int monthDue;
     protected int dayDue;
     protected int yearDue;
-    protected String [] Due;
-    String [] returnedDate;
+    protected String [] due;
+    protected String [] returnedDate;
+
+    private final double DVD_RENT_FEE = 1.20;
+    private final double DVD_LATE_FEE = 2.00;
 
 	public DVD() {
 	}
@@ -78,21 +80,21 @@ public class DVD implements Serializable {
 
 	public double getCost(GregorianCalendar dateReturned) {
 
-        double total = 1.20;
+        double total = DVD_RENT_FEE;
 
 
-        df.setCalendar(dateReturned);
-        String returnedOn = df.format(dateReturned.getTime());
-        String dueDate = df.format(getDueBack());
+        DATE_FORMAT.setCalendar(dateReturned);
+        String returnedOn = DATE_FORMAT.format(dateReturned.getTime());
+        String dueDate = DATE_FORMAT.format(getDueBack());
 
         setReturnDate(returnedOn, dueDate);
 
         if (yearDue < yearReturned){
-            total += 2.0;
+            total += DVD_LATE_FEE;
         }else if( monthDue < monthReturned){
-            total += 2.0;
+            total += DVD_LATE_FEE;
         }else if(dayDue < dayReturned){
-            total += 2.0;
+            total += DVD_LATE_FEE;
         }
 
         return total;
@@ -107,11 +109,11 @@ public class DVD implements Serializable {
         yearReturned = Integer.parseInt(returnedDate[2]);
 
 
-        Due = dueDate.split("/");
+        due = dueDate.split("/");
 
-        monthDue = Integer.parseInt(Due[0]);
-        dayDue = Integer.parseInt(Due[1]);
-        yearDue = Integer.parseInt(Due[2]);
+        monthDue = Integer.parseInt(due[0]);
+        dayDue = Integer.parseInt(due[1]);
+        yearDue = Integer.parseInt(due[2]);
     }
 
 

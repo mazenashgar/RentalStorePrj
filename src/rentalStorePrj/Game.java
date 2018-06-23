@@ -1,6 +1,5 @@
 package rentalStorePrj;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -8,6 +7,8 @@ public class Game extends DVD {
 
     /** Represents the type of player */
     private PlayerType player;  // Xbox360, Xbox1, PS4, WiiU, NintendoSwitch
+    private final double GAME_RENT_FEE = 5.00;
+    private final double GAME_LATE_FEE = 10.00;
 
     public Game() {}
 
@@ -31,21 +32,21 @@ public class Game extends DVD {
 
     public double getCost(GregorianCalendar dateReturned) {
 
-        double total = 5.0;
+        double total = GAME_RENT_FEE;
 
 
-        df.setCalendar(dateReturned);
-        String returnedOn = df.format(dateReturned.getTime());
-        String dueDate = df.format(getDueBack());
+        DATE_FORMAT.setCalendar(dateReturned);
+        String returnedOn = DATE_FORMAT.format(dateReturned.getTime());
+        String dueDate = DATE_FORMAT.format(getDueBack());
 
         setReturnDate(returnedOn, dueDate);
 
         if (yearDue < yearReturned){
-            total += 10.0;
+            total += GAME_LATE_FEE;
         }else if(monthDue < monthReturned){
-            total += 10.0;
+            total += GAME_LATE_FEE;
         }else if(dayDue < dayReturned){
-            total += 10.0;
+            total += GAME_LATE_FEE;
         }
 
         return total;

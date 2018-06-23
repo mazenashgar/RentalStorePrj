@@ -9,7 +9,7 @@ public class RentalStore extends AbstractListModel {
 
 	private ArrayList<DVD> listDVDs;
 	private boolean filter;
-    SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+    private SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
 	public RentalStore() {
 		super();
@@ -26,6 +26,7 @@ public class RentalStore extends AbstractListModel {
 	public DVD get (int i) {
 		return listDVDs.get(i);
 	}
+
 	public void update(int index){
 	    fireContentsChanged(this, index, index);
     }
@@ -54,11 +55,11 @@ public class RentalStore extends AbstractListModel {
 		return listDVDs.size();
 	}
 
-	public String linePrinter (int arg0){
+	public String linePrinter (int index){
 
-        DVD unit = listDVDs.get(arg0);
+        DVD unit = listDVDs.get(index);
 
-        String line = "Name: " + listDVDs.get(arg0).getNameOfRenter()
+        String line = "Name: " + listDVDs.get(index).getNameOfRenter()
                 + ",\t\t";
 
         if(unit instanceof Game){
@@ -67,9 +68,9 @@ public class RentalStore extends AbstractListModel {
             line += "DVD: ";
         }
 
-        line += listDVDs.get(arg0).getTitle()
-                + ",\t\t" + "Rented: " + (df.format(listDVDs.get(arg0).getBought()))
-                + ",\t\t" + "Due Date: " + (df.format(listDVDs.get(arg0).getDueBack()));
+        line += listDVDs.get(index).getTitle()
+                + ",\t\t" + "Rented: " + (DATE_FORMAT.format(listDVDs.get(index).getBought()))
+                + ",\t\t" + "Due Date: " + (DATE_FORMAT.format(listDVDs.get(index).getDueBack()));
 
         if (unit instanceof Game)
             line += ",\t\t"+ "Car Player: " + ((Game)unit).getPlayer();
@@ -153,12 +154,12 @@ public class RentalStore extends AbstractListModel {
 
 
 	            if(s.length == 4){
-	                DVD dvd = new DVD(df.parse(rentDate),df.parse(dueDate),title,name);
+	                DVD dvd = new DVD(DATE_FORMAT.parse(rentDate), DATE_FORMAT.parse(dueDate),title,name);
                     add(dvd);
 
                 }else if (s.length == 5){
                     String player = s[4].substring(12);
-                    Game game = new Game(df.parse(rentDate),df.parse(dueDate),title,name, PlayerType.valueOf(player));
+                    Game game = new Game(DATE_FORMAT.parse(rentDate), DATE_FORMAT.parse(dueDate),title,name, PlayerType.valueOf(player));
 	                add(game);
                 }
                 update(index);

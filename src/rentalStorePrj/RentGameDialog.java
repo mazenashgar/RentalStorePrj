@@ -13,7 +13,6 @@ public class RentGameDialog  extends Dialog implements ActionListener {
 
     private Game unit;
     private PlayerType player;
-    private String playerChosen;
     private JComboBox playerOptions;
 
     public RentGameDialog(JFrame parent, Game d) {

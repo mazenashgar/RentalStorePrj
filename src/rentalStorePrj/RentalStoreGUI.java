@@ -39,7 +39,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 	/** Holds JListArea */
 	private JList JListArea;
 
-	private NumberFormat numformatter = NumberFormat.getCurrencyInstance(Locale.US);
+
 
 	/** Scroll pane */
 	//private JScrollPane scrollList;
@@ -166,6 +166,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 			GregorianCalendar date = new GregorianCalendar();
 			String inputDate = JOptionPane.showInputDialog("Enter return date: ");
 			SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            NumberFormat numFormatter = NumberFormat.getCurrencyInstance(Locale.US);
 			try {
 				Date newDate = df.parse(inputDate);
 				date.setTime(newDate);
@@ -179,7 +180,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
                 DVD unit = list.get(index);
 
                 JOptionPane.showMessageDialog(null, "Thanks " + unit.getNameOfRenter() +
-                        " for returning " + unit.getTitle() + "\nYou owe: " + numformatter.format(unit.getCost(date)) +
+                        " for returning " + unit.getTitle() + "\nYou owe: " + numFormatter.format(unit.getCost(date)) +
                         " dollars");
 
                 list.remove(unit, index);
