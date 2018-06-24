@@ -7,21 +7,21 @@ import java.util.GregorianCalendar;
 
 public class DVD implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     protected SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
-	/** The date the DVD was rented */
-	private Date bought;
+    /** The date the DVD was rented */
+    private Date bought;
 
-	/** The DVD is the DVD is due back */
-	private Date dueBack;
+    /** The DVD is the DVD is due back */
+    private Date dueBack;
 
-	/** The title of the DVD */
-	private String title;
+    /** The title of the DVD */
+    private String title;
 
-	/** The name of the person who is renting the DVD */
-	private String nameOfRenter;
+    /** The name of the person who is renting the DVD */
+    private String nameOfRenter;
 
     protected int monthReturned;
     protected int dayReturned;
@@ -34,50 +34,50 @@ public class DVD implements Serializable {
     private final double DVD_RENT_FEE = 1.20;
     private final double DVD_LATE_FEE = 2.00;
 
-	public DVD() {
-	}
+    public DVD() {
+    }
 
-	public DVD(Date bought, Date dueBack, String title, String name) {
-		super();
-		this.bought = bought;
-		this.dueBack = dueBack;
-		this.title = title;
-		this.nameOfRenter = name;
-	}
+    public DVD(Date bought, Date dueBack, String title, String name) {
+        super();
+        this.bought = bought;
+        this.dueBack = dueBack;
+        this.title = title;
+        this.nameOfRenter = name;
+    }
 
-	public Date getBought() {
-		return bought;
-	}
-	
-	public void setBought(Date bought) {
-		this.bought = bought;
-	}
-	
-	public Date getDueBack() {
-		return dueBack;
-	}
-	
-	public void setDueBack(Date dueBack) {
-		this.dueBack = dueBack;
-	}
+    public Date getBought() {
+        return bought;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setBought(Date bought) {
+        this.bought = bought;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public Date getDueBack() {
+        return dueBack;
+    }
 
-	public String getNameOfRenter() {
-		return nameOfRenter;
-	}
+    public void setDueBack(Date dueBack) {
+        this.dueBack = dueBack;
+    }
 
-	public void setNameOfRenter(String nameOfRenter) {
-		this.nameOfRenter = nameOfRenter;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public double getCost(GregorianCalendar dateReturned) {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getNameOfRenter() {
+        return nameOfRenter;
+    }
+
+    public void setNameOfRenter(String nameOfRenter) {
+        this.nameOfRenter = nameOfRenter;
+    }
+
+    public double getCost(GregorianCalendar dateReturned) {
 
         double total = DVD_RENT_FEE;
 
@@ -97,9 +97,9 @@ public class DVD implements Serializable {
         }
 
         return total;
-	}
+    }
 
-	protected void setReturnDate (String returnedOn, String dueDate){
+    protected void setReturnDate (String returnedOn, String dueDate){
 
         checkReturnDate(returnedOn);
         String [] due;
@@ -112,7 +112,7 @@ public class DVD implements Serializable {
 
     }
 
-	protected boolean checkReturnDate(String dateReturned){
+    protected boolean checkReturnDate(String dateReturned){
 
         String [] returnedDate;
         returnedDate = dateReturned.split("/");
@@ -138,11 +138,25 @@ public class DVD implements Serializable {
 
         if(yearRented > yearReturned){
             return false;
-        }else if (monthRented > monthReturned){
+        }else if (yearRented == yearReturned && monthRented > monthReturned){
             return false;
-        }else if(dayRented > dayReturned){
+        }else if(yearRented == yearReturned && monthRented == monthReturned && dayRented > dayReturned){
             return false;
         }
         return true;
-	}
+    }
+
+    public String DelLeadWhiteSpace (String string){
+
+        if(string.equals("")){
+            return string;
+        }
+
+        if(string.charAt(0) == ' '){
+            string = DelLeadWhiteSpace(string.substring(1));
+        }
+
+        return string;
+
+    }
 }

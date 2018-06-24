@@ -8,47 +8,47 @@ import java.util.*;
 
 public class RentalStore extends AbstractListModel {
 
-	private ArrayList<DVD> listDVDs;
+    private ArrayList<DVD> listDVDs;
     private SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
-	public RentalStore() {
-		super();
-		listDVDs = new ArrayList<DVD>();
-	}
-
-	public void add (DVD a) {
-		listDVDs.add(a);
-		fireIntervalAdded(this, 0, listDVDs.size());
-	}
-
-	public DVD get (int i) {
-		return listDVDs.get(i);
-	}
-
-	public void update(int index){
-	    fireContentsChanged(this, index, index);
+    public RentalStore() {
+        super();
+        listDVDs = new ArrayList<DVD>();
     }
 
-	public void remove (DVD r, int index){
-	    listDVDs.remove(r);
-	    fireIntervalRemoved(this, index, listDVDs.size());
+    public void add (DVD a) {
+        listDVDs.add(a);
+        fireIntervalAdded(this, 0, listDVDs.size());
     }
 
-	public Object getElementAt(int arg0) {
+    public DVD get (int i) {
+        return listDVDs.get(i);
+    }
 
-		DVD unit = listDVDs.get(arg0);
+    public void update(int index){
+        fireContentsChanged(this, index, index);
+    }
 
-		String line = linePrinter(arg0);
+    public void remove (DVD r, int index){
+        listDVDs.remove(r);
+        fireIntervalRemoved(this, index, listDVDs.size());
+    }
 
-		return line;
-	}
+    public Object getElementAt(int arg0) {
 
-	public int getSize() {
+        DVD unit = listDVDs.get(arg0);
 
-		return listDVDs.size();
-	}
+        String line = linePrinter(arg0);
 
-	private String linePrinter (int index){
+        return line;
+    }
+
+    public int getSize() {
+
+        return listDVDs.size();
+    }
+
+    private String linePrinter (int index){
 
         DVD unit = listDVDs.get(index);
 
@@ -72,31 +72,31 @@ public class RentalStore extends AbstractListModel {
     }
 
     public void saveAsSerializable(String filename) {
-		try {
-			FileOutputStream fos = new FileOutputStream(filename);
-			ObjectOutputStream os = new ObjectOutputStream(fos);
-			os.writeObject(listDVDs);
-			os.close();
-		}
-		catch (IOException ex) {
-			JOptionPane.showMessageDialog(null,"Error in saving db");
+        try {
+            FileOutputStream fos = new FileOutputStream(filename);
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+            os.writeObject(listDVDs);
+            os.close();
+        }
+        catch (IOException ex) {
+            JOptionPane.showMessageDialog(null,"Error in saving db");
 
-		}
-	}
+        }
+    }
 
-	public void loadFromSerializable(String filename) {
-		try {
-			FileInputStream fis = new FileInputStream(filename);
-			ObjectInputStream is = new ObjectInputStream(fis);
+    public void loadFromSerializable(String filename) {
+        try {
+            FileInputStream fis = new FileInputStream(filename);
+            ObjectInputStream is = new ObjectInputStream(fis);
 
-			listDVDs = (ArrayList<DVD>) is.readObject();
-			fireIntervalAdded(this, 0, listDVDs.size() - 1);
-			is.close();
-		}
-		catch (Exception ex) {
-			JOptionPane.showMessageDialog(null,"Error in loading db");
-		}
-	}
+            listDVDs = (ArrayList<DVD>) is.readObject();
+            fireIntervalAdded(this, 0, listDVDs.size() - 1);
+            is.close();
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Error in loading db");
+        }
+    }
 
     public void saveAsText (String filename){
 
@@ -121,19 +121,19 @@ public class RentalStore extends AbstractListModel {
 
     public void loadFromText (String filename){
 
-	    int index = 0;
+        int index = 0;
         Scanner fileReader;
         listDVDs = new ArrayList<DVD>();
         String temp;
         String[] s;
 
-	    try{
-	        fileReader = new Scanner(new File(filename));
+        try{
+            fileReader = new Scanner(new File(filename));
 
-	        while(fileReader.hasNextLine()){
+            while(fileReader.hasNextLine()){
 
-	            temp = fileReader.nextLine();
-	            s = temp.split("\t\t");
+                temp = fileReader.nextLine();
+                s = temp.split("\t\t");
 
                 String name = s[0].substring(5,s[0].length()-1);
                 String title;
@@ -146,17 +146,17 @@ public class RentalStore extends AbstractListModel {
                 String dueDate = s[3].substring(10);
 
 
-	            if(s.length == 4){
-	                DVD dvd = new DVD(DATE_FORMAT.parse(rentDate), DATE_FORMAT.parse(dueDate),title,name);
+                if(s.length == 4){
+                    DVD dvd = new DVD(DATE_FORMAT.parse(rentDate), DATE_FORMAT.parse(dueDate),title,name);
                     add(dvd);
 
                 }else if (s.length == 5){
                     String player = s[4].substring(12);
                     Game game = new Game(DATE_FORMAT.parse(rentDate), DATE_FORMAT.parse(dueDate),title,name, PlayerType.valueOf(player));
-	                add(game);
+                    add(game);
                 }
                 update(index);
-	            index++;
+                index++;
             }
 
         }catch (Exception ex){
@@ -166,7 +166,7 @@ public class RentalStore extends AbstractListModel {
 
     public boolean findLate (String lateOn, ArrayList lateList) throws ParseException{
 
-	    //check if date is valid
+        //check if date is valid
         String []lateOnDate = lateOn.split("/");
         int lateOnMonth = Integer.parseInt(lateOnDate[0]);
         int lateOnDay = Integer.parseInt(lateOnDate[1]);
@@ -184,16 +184,22 @@ public class RentalStore extends AbstractListModel {
         Date lateDate = DATE_FORMAT.parse(lateOn);
         long diff;
 
-            for (int i = 0; i < listDVDs.size(); i++) {
+        for (int i = 0; i < listDVDs.size(); i++) {
 
-                if (lateDate.after(listDVDs.get(i).getDueBack())) {
+            if (lateDate.after(listDVDs.get(i).getDueBack())) {
 
-                    diff = (lateDate.getTime() - listDVDs.get(i).getDueBack().getTime())/ (1000 * 60 * 60 * 24);
-                    lateList.add(i, "" + diff + " Day(s) late on: " + listDVDs.get(i).getTitle());
-                }
+                diff = (lateDate.getTime() - listDVDs.get(i).getDueBack().getTime())/ (1000 * 60 * 60 * 24);
+                lateList.add(i, "" + diff + " Day(s) late on: " + listDVDs.get(i).getTitle());
             }
+        }
 
         return true;
 
+    }
+
+    public String checkWhiteSpace (String string){
+
+        DVD unit = new DVD();
+        return unit.DelLeadWhiteSpace(string);
     }
 }

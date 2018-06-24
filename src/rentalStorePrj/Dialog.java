@@ -43,12 +43,18 @@ public class Dialog extends JDialog {
         }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null,
                     "Please check your inputs" +
-                            "\n\nNOTE: The dates can only contain numbers" +
+                            "\nNOTE: The dates can only contain numbers" +
                             "\n**No letters or special characters**",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
         }
 
+        if(yearRented < 0){
+            JOptionPane.showMessageDialog(null,
+                    "Year rented on is incorrect",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        }
 
         if(monthRented < 1 || monthRented > 12){
             JOptionPane.showMessageDialog(null,
@@ -76,7 +82,7 @@ public class Dialog extends JDialog {
         }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null,
                     "Please check your inputs" +
-                            "\n\nNOTE: The dates can only contain numbers" +
+                            "\nNOTE: The dates can only contain numbers" +
                             "\n**No letters or special characters**",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
@@ -84,10 +90,23 @@ public class Dialog extends JDialog {
 
         boolean mistake = false;
 
+        if(yearDue < 0){
+            JOptionPane.showMessageDialog(null,
+                    "Year due back is incorrect",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        }
+
         if(monthDue < 1 || monthDue > 12){
-            mistake = true;
+            JOptionPane.showMessageDialog(null,
+                    "Month due back is incorrect",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
         } else if (dayDue < 1 || dayDue > 31){
-            mistake = true;
+            JOptionPane.showMessageDialog(null,
+                    "Day due back is incorrect",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
         } else if(yearDue < yearRented){
             mistake = true;
         } else if (yearDue == yearRented && monthDue < monthRented){

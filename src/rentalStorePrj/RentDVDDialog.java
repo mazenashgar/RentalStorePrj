@@ -98,28 +98,38 @@ public class RentDVDDialog extends Dialog implements ActionListener {
 
     private boolean inputCheck(){
 
-        if(renterTxt.getText().equals("")){
+        String name = renterTxt.getText();
+        String title = titleTxt.getText();
+        String rentDate = rentedOnTxt.getText();
+        String dueDate = DueBackTxt.getText();
+
+        name = unit.DelLeadWhiteSpace(name);
+        title = unit.DelLeadWhiteSpace(title);
+        rentDate = unit.DelLeadWhiteSpace(rentDate);
+        dueDate = unit.DelLeadWhiteSpace(dueDate);
+
+        if(name.equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter renter's name",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
-        } else if(titleTxt.getText().equals("")){
+        } else if(title.equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter the title",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
-        } else if(rentedOnTxt.getText().equals("")){
+        } else if(rentDate.equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter the date rented on",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
-        } else if(DueBackTxt.getText().equals("")){
+        } else if(dueDate.equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter the due back date",
@@ -128,15 +138,15 @@ public class RentDVDDialog extends Dialog implements ActionListener {
 
         } else {
 
-            unit.setNameOfRenter(renterTxt.getText());
-            unit.setTitle(titleTxt.getText());
+            unit.setNameOfRenter(name);
+            unit.setTitle(title);
 
 
             Date temp;
 
             //try to save the rent and due back
             try {
-                dateEntered = rentedOnTxt.getText();
+                dateEntered = rentDate;
 
                 temp = DATE_FORMAT.parse(dateEntered);
 
@@ -155,7 +165,7 @@ public class RentDVDDialog extends Dialog implements ActionListener {
 
             try {
 
-                dateEntered = DueBackTxt.getText();
+                dateEntered = dueDate;
                 temp = DATE_FORMAT.parse(dateEntered);
 
                 if(!checkDateDue(dateEntered)){
