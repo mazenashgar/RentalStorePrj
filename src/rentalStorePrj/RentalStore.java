@@ -182,13 +182,13 @@ public class RentalStore extends AbstractListModel {
         }
 
         Date lateDate = DATE_FORMAT.parse(lateOn);
-        int diff;
+        long diff;
 
             for (int i = 0; i < listDVDs.size(); i++) {
 
                 if (lateDate.after(listDVDs.get(i).getDueBack())) {
 
-                    diff = lateDate.getDay() - listDVDs.get(i).getDueBack().getDay();
+                    diff = (lateDate.getTime() - listDVDs.get(i).getDueBack().getTime())/ (1000 * 60 * 60 * 24);
                     lateList.add(i, "" + diff + " Day(s) late on: " + listDVDs.get(i).getTitle());
                 }
             }
