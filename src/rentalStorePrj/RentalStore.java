@@ -14,7 +14,6 @@ public class RentalStore extends AbstractListModel {
 	public RentalStore() {
 		super();
 		listDVDs = new ArrayList<DVD>();
-
 	}
 
 	public void add (DVD a) {
@@ -183,7 +182,7 @@ public class RentalStore extends AbstractListModel {
         }
 
         Date lateDate = DATE_FORMAT.parse(lateOn);
-        long diff;
+        int diff;
 
             for (int i = 0; i < listDVDs.size(); i++) {
 

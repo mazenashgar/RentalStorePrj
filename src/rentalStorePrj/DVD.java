@@ -128,10 +128,9 @@ public class DVD implements Serializable {
         int dayRented = Integer.parseInt(rented[1]);
         int yearRented = Integer.parseInt(rented[2]);
 
-        if(yearRented < 1){
+        if(yearReturned < 1){
             return false;
-        }
-        if(monthReturned > 12 || monthReturned < 1){
+        }else if(monthReturned > 12 || monthReturned < 1){
             return false;
         }else if(dayReturned > 31 || dayReturned < 1){
             return false;

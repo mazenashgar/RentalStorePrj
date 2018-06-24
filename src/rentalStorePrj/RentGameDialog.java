@@ -108,28 +108,28 @@ public class RentGameDialog  extends Dialog implements ActionListener {
 
             JOptionPane.showMessageDialog(null,
                     "Please enter renter's name",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
         } else if(titleTxt.getText().equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter the title",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
         } else if(rentedOnTxt.getText().equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter the date rented on",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
         } else if(DueBackTxt.getText().equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter the due back date",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
         } else {
@@ -157,7 +157,7 @@ public class RentGameDialog  extends Dialog implements ActionListener {
             } catch (ParseException p) {
                 JOptionPane.showMessageDialog(null,
                         "Date rented on is incorrect",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
+                        "ERROR", JOptionPane.ERROR_MESSAGE, icon);
                 return false;
             }
 
@@ -175,7 +175,7 @@ public class RentGameDialog  extends Dialog implements ActionListener {
             } catch (ParseException p) {
                 JOptionPane.showMessageDialog(null,
                         "Due back date is incorrect",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
+                        "ERROR", JOptionPane.ERROR_MESSAGE, icon);
                 return false;
             }
 

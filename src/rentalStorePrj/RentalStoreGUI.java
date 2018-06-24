@@ -44,7 +44,11 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 	/** Scroll pane */
 	private JScrollPane scrollList;
 
+	private ImageIcon icon;
+
 	private RentalStoreGUI() {
+
+	    icon = new ImageIcon("rentalStore.png");
 
 		//adding menu bar and menu items
 		menus = new JMenuBar();
@@ -178,37 +182,52 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 	private void lateUnits(){
 
         ArrayList<String> lateList = new ArrayList<>();
-        String lateOnDate = JOptionPane.showInputDialog("Please enter a date to find the late units on it" +
-                "\nPlease use the following format: MM/DD/YYYY");
+        String lateOnDate = (String) JOptionPane.showInputDialog(null,
+                "Please enter a date to find the late units on it" +
+                "\nPlease use the following format: MM/DD/YYYY", "Late Units Finder",
+                JOptionPane.QUESTION_MESSAGE, icon, null, null);
 
         if(lateOnDate != null) {
             try {
 
                 if (!list.findLate(lateOnDate, lateList)) {
-                    JOptionPane.showMessageDialog(null, "Please enter a valid date to find late units");
+                    JOptionPane.showMessageDialog(null,
+                            "Please enter a valid date to find late units",
+                            "Error", JOptionPane.ERROR_MESSAGE, icon);
                     return;
                 }
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Please enter a valid date to find late units");
+                JOptionPane.showMessageDialog(null,
+                        "Please enter a valid date to find late units",
+                        "Error", JOptionPane.ERROR_MESSAGE, icon);
                 return;
             }
 
             if (lateList.size() == 0) {
 
-                JOptionPane.showMessageDialog(null, "No units are late on that day");
+                JOptionPane.showMessageDialog(null,
+                        "No units are late on " + lateOnDate,
+                        "Error", JOptionPane.INFORMATION_MESSAGE, icon);
 
             } else {
 
-                JOptionPane.showMessageDialog(null, new JList(lateList.toArray()));
+                    //Show list
+                JOptionPane.showMessageDialog(null,
+                        new JList(lateList.toArray()), "Late Units",
+                        JOptionPane.INFORMATION_MESSAGE, icon);
             }
         }
     }
 
 	private void returnUnit (){
         GregorianCalendar date = new GregorianCalendar();
-        String inputDate = JOptionPane.showInputDialog("Enter return date: " +
-                "\nPlease use the following format: MM/DD/YYYY");
+
+        String inputDate = (String) JOptionPane.showInputDialog(null,
+                "Enter return date: " +
+                "\nPlease use the following format: MM/DD/YYYY", "Return",
+                JOptionPane.QUESTION_MESSAGE, icon, null, null);
+
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         NumberFormat numFormatter = NumberFormat.getCurrencyInstance(Locale.US);
 
@@ -221,7 +240,9 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
                 return;
             }
         } catch (ParseException pe) {
-            JOptionPane.showMessageDialog(null, "Please enter a valid date to return");
+            JOptionPane.showMessageDialog(null,
+                    "Please enter a valid date to return",
+                    "Error", JOptionPane.ERROR_MESSAGE, icon);
             return;
         }
 
@@ -231,19 +252,26 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 
 
             if(unit.checkReturnDate(inputDate)) {
+
                 double cost = unit.getCost(date);
-                JOptionPane.showMessageDialog(null, "Thanks" + unit.getNameOfRenter() +
-                        " for returning " + unit.getTitle() + "\nYou owe: " + numFormatter.format(cost) +
-                        " dollars");
+
+                JOptionPane.showMessageDialog(null,
+                        "Thanks" + unit.getNameOfRenter() +
+                        " for returning " + unit.getTitle() + "\nYou owe: "
+                                + numFormatter.format(cost) + " dollars",
+                        "Returned", JOptionPane.INFORMATION_MESSAGE, icon);
 
                 list.remove(unit, index);
             }else{
                 JOptionPane.showMessageDialog(null,
-                        "Return date is invalid or it is before the rented on Date");
+                        "Return date is invalid or it is before the rented on Date",
+                        "Error", JOptionPane.ERROR_MESSAGE, icon);
             }
 
         }catch(ArrayIndexOutOfBoundsException a){
-            JOptionPane.showMessageDialog(null, "Please select a unit to return it");
+            JOptionPane.showMessageDialog(null,
+                    "Please select a unit to return it", "Error",
+                    JOptionPane.ERROR_MESSAGE, icon);
         }
     }
 

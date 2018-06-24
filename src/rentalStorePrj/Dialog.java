@@ -24,8 +24,12 @@ public class Dialog extends JDialog {
     protected int dayDue;
     protected int yearDue;
 
+    protected ImageIcon icon;
+
     public Dialog(JFrame parent, boolean model) {
         super(parent, model);
+
+        icon = new ImageIcon("rentalStore.png");
     }
 
     protected boolean checkDateRented(String dateRented){
@@ -41,7 +45,7 @@ public class Dialog extends JDialog {
                     "Please check your inputs" +
                             "\n\nNOTE: The dates can only contain numbers" +
                             "\n**No letters or special characters**",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
         }
 
@@ -49,12 +53,12 @@ public class Dialog extends JDialog {
         if(monthRented < 1 || monthRented > 12){
             JOptionPane.showMessageDialog(null,
                     "Month rented on is incorrect",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
         } else if (dayRented < 1 || dayRented > 31){
             JOptionPane.showMessageDialog(null,
                     "Day rented on is incorrect",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
         }
         else{
@@ -74,34 +78,28 @@ public class Dialog extends JDialog {
                     "Please check your inputs" +
                             "\n\nNOTE: The dates can only contain numbers" +
                             "\n**No letters or special characters**",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
         }
 
+        boolean mistake = false;
+
         if(monthDue < 1 || monthDue > 12){
-            JOptionPane.showMessageDialog(null,
-                    "Month Due back is incorrect",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-            return false;
+            mistake = true;
         } else if (dayDue < 1 || dayDue > 31){
-            JOptionPane.showMessageDialog(null,
-                    "Day Due back is incorrect",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-            return false;
+            mistake = true;
         } else if(yearDue < yearRented){
-            JOptionPane.showMessageDialog(null,
-                    "Due date can't be before rented date",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-            return false;
+            mistake = true;
         } else if (yearDue == yearRented && monthDue < monthRented){
-            JOptionPane.showMessageDialog(null,
-                    "Due date can't be before rented date",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-            return false;
+            mistake = true;
         } else if (yearDue == yearRented && monthDue == monthRented && dayDue < dayRented){
+            mistake = true;
+        }
+
+        if(mistake){
             JOptionPane.showMessageDialog(null,
                     "Due date can't be before rented date",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
         }
         else{
