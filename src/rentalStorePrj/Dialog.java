@@ -90,14 +90,13 @@ public class Dialog extends JDialog {
 
         boolean mistake = false;
 
-        if(yearDue < 0){
+        if(yearDue < 0) {
             JOptionPane.showMessageDialog(null,
                     "Year due back is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-        }
 
-        if(monthDue < 1 || monthDue > 12){
+        } else if(monthDue < 1 || monthDue > 12){
             JOptionPane.showMessageDialog(null,
                     "Month due back is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
