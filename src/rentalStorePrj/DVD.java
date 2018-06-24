@@ -12,16 +12,16 @@ public class DVD implements Serializable {
     protected SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
 	/** The date the DVD was rented */
-	protected Date bought;
+	private Date bought;
 
 	/** The DVD is the DVD is due back */
-	protected Date dueBack;
+	private Date dueBack;
 
 	/** The title of the DVD */
-	protected String title;
+	private String title;
 
 	/** The name of the person who is renting the DVD */
-	protected String nameOfRenter;
+	private String nameOfRenter;
 
     protected int monthReturned;
     protected int dayReturned;
@@ -29,8 +29,7 @@ public class DVD implements Serializable {
     protected int monthDue;
     protected int dayDue;
     protected int yearDue;
-    protected String [] due;
-    protected String [] returnedDate;
+
 
     private final double DVD_RENT_FEE = 1.20;
     private final double DVD_LATE_FEE = 2.00;
@@ -103,6 +102,7 @@ public class DVD implements Serializable {
 	protected void setReturnDate (String returnedOn, String dueDate){
 
         checkReturnDate(returnedOn);
+        String [] due;
 
         due = dueDate.split("/");
 
@@ -114,6 +114,7 @@ public class DVD implements Serializable {
 
 	protected boolean checkReturnDate(String dateReturned){
 
+        String [] returnedDate;
         returnedDate = dateReturned.split("/");
 
         monthReturned = Integer.parseInt(returnedDate[0]);

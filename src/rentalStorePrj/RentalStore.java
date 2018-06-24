@@ -2,7 +2,6 @@ package rentalStorePrj;
 
 import javax.swing.*;
 import java.io.*;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -10,12 +9,10 @@ import java.util.*;
 public class RentalStore extends AbstractListModel {
 
 	private ArrayList<DVD> listDVDs;
-	private boolean filter;
     private SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
 	public RentalStore() {
 		super();
-		filter = false;
 		listDVDs = new ArrayList<DVD>();
 
 	}
@@ -40,12 +37,7 @@ public class RentalStore extends AbstractListModel {
 
 	public Object getElementAt(int arg0) {
 
-
-
 		DVD unit = listDVDs.get(arg0);
-
-		//		String rentedOnDateStr = DateFormat.getDateInstance(DateFormat.SHORT)
-		//				.format(unit.getRentedOn().getTime());
 
 		String line = linePrinter(arg0);
 
@@ -57,7 +49,7 @@ public class RentalStore extends AbstractListModel {
 		return listDVDs.size();
 	}
 
-	public String linePrinter (int index){
+	private String linePrinter (int index){
 
         DVD unit = listDVDs.get(index);
 
@@ -171,5 +163,38 @@ public class RentalStore extends AbstractListModel {
         }catch (Exception ex){
             JOptionPane.showMessageDialog(null,"Error in load text from" + filename);
         }
+    }
+
+    public boolean findLate (String lateOn, ArrayList lateList) throws ParseException{
+
+	    //check if date is valid
+        String []lateOnDate = lateOn.split("/");
+        int lateOnMonth = Integer.parseInt(lateOnDate[0]);
+        int lateOnDay = Integer.parseInt(lateOnDate[1]);
+        int lateOnYear = Integer.parseInt(lateOnDate[2]);
+
+        if(lateOnYear < 1){
+            return false;
+        }
+        if(lateOnMonth > 12 || lateOnMonth < 1){
+            return false;
+        }else if(lateOnDay > 31 || lateOnDay < 1){
+            return false;
+        }
+
+        Date lateDate = DATE_FORMAT.parse(lateOn);
+        long diff;
+
+            for (int i = 0; i < listDVDs.size(); i++) {
+
+                if (lateDate.after(listDVDs.get(i).getDueBack())) {
+
+                    diff = lateDate.getDay() - listDVDs.get(i).getDueBack().getDay();
+                    lateList.add(i, "" + diff + " Day(s) late on: " + listDVDs.get(i).getTitle());
+                }
+            }
+
+        return true;
+
     }
 }

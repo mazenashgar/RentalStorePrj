@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -32,6 +33,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 	private JMenuItem rentDVD;
 	private JMenuItem rentGame;
 	private JMenuItem returnItem;
+	private JMenuItem findLateItem;
 
     /** Holds the list engine */
 	private RentalStore list;
@@ -39,12 +41,10 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 	/** Holds JListArea */
 	private JList JListArea;
 
-
-
 	/** Scroll pane */
-	//private JScrollPane scrollList;
+	private JScrollPane scrollList;
 
-	public RentalStoreGUI() {
+	private RentalStoreGUI() {
 
 		//adding menu bar and menu items
 		menus = new JMenuBar();
@@ -58,6 +58,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		rentDVD = new JMenuItem("Rent DVD");
 		rentGame = new JMenuItem("Rent Game");
 		returnItem = new JMenuItem("Return");
+		findLateItem = new JMenuItem("Find late");
 
 		//adding items to bar
         fileMenu.add(openTextItem);
@@ -67,6 +68,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		fileMenu.add(exitItem);
 		actionMenu.add(rentDVD);
 		actionMenu.add(rentGame);
+		actionMenu.add(findLateItem);
 		actionMenu.add(returnItem);
 
 		menus.add(fileMenu);
@@ -80,6 +82,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		exitItem.addActionListener(this);
 		rentDVD.addActionListener(this);
 		rentGame.addActionListener(this);
+		findLateItem.addActionListener(this);
 		returnItem.addActionListener(this);
 
 
@@ -89,8 +92,10 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 		//adding list to the GUI1024
 		list = new RentalStore();
 		JListArea = new JList(list);
-		add(JListArea);
+		scrollList = new JScrollPane(JListArea);
+		add(scrollList);
 
+		setTitle("Rental Store");
 		setVisible(true);
 		setSize(700, 800);
 	}
@@ -140,7 +145,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
         }
 
 		//MenuBar options
-		if (e.getSource() == exitItem) {
+		if (comp == exitItem) {
 			System.exit(1);
 		}
 		if (e.getSource() == rentDVD) {
@@ -151,7 +156,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
                 list.add(dvd);
             }
 		}
-		if(e.getSource() == rentGame){
+		if(comp == rentGame){
 		    Game game = new Game();
 		    RentGameDialog dialog = new RentGameDialog(this, game);
 
@@ -160,50 +165,87 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
             }
         }
 
-		if (returnItem == e.getSource()) {
+        if(comp == findLateItem){
+                lateUnits();
+        }
 
-            GregorianCalendar date = new GregorianCalendar();
-            String inputDate = JOptionPane.showInputDialog("Enter return date: " +
-                    "\nPlease use the following format: MM/DD/YYYY");
-            SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-            NumberFormat numFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+		if (comp == returnItem) {
 
-                try {
-                    if (inputDate != null) {
-                        Date newDate = df.parse(inputDate);
-                        date.setTime(newDate);
-                    }
-                    else {
-                        return;
-                    }
-                } catch (ParseException pe) {
-                    JOptionPane.showMessageDialog(null, "Please enter a valid date to return");
-                    return;
-                }
-
-            try {
-                int index = JListArea.getSelectedIndex();
-                DVD unit = list.get(index);
-
-
-                if(unit.checkReturnDate(inputDate)) {
-                    double cost = unit.getCost(date);
-                    JOptionPane.showMessageDialog(null, "Thanks" + unit.getNameOfRenter() +
-                            " for returning " + unit.getTitle() + "\nYou owe: " + numFormatter.format(cost) +
-                            " dollars");
-
-                    list.remove(unit, index);
-                }else{
-                    JOptionPane.showMessageDialog(null,
-                            "Return date is incorrect or it is before the rented on Date");
-                    return;
-                }
-
-            }catch(ArrayIndexOutOfBoundsException a){
-                JOptionPane.showMessageDialog(null, "Please select a unit to return it");
-            }
+                returnUnit();
 		}
 	}
+
+	private void lateUnits(){
+
+        ArrayList<String> lateList = new ArrayList<>();
+        String lateOnDate = JOptionPane.showInputDialog("Please enter a date to find the late units on it" +
+                "\nPlease use the following format: MM/DD/YYYY");
+
+        if(lateOnDate != null) {
+            try {
+
+                if (!list.findLate(lateOnDate, lateList)) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid date to find late units");
+                    return;
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid date to find late units");
+                return;
+            }
+
+            if (lateList.size() == 0) {
+
+                JOptionPane.showMessageDialog(null, "No units are late on that day");
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, new JList(lateList.toArray()));
+            }
+        }
+    }
+
+	private void returnUnit (){
+        GregorianCalendar date = new GregorianCalendar();
+        String inputDate = JOptionPane.showInputDialog("Enter return date: " +
+                "\nPlease use the following format: MM/DD/YYYY");
+        SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        NumberFormat numFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+
+        try {
+            if (inputDate != null) {
+                Date newDate = df.parse(inputDate);
+                date.setTime(newDate);
+            }
+            else {
+                return;
+            }
+        } catch (ParseException pe) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid date to return");
+            return;
+        }
+
+        try {
+            int index = JListArea.getSelectedIndex();
+            DVD unit = list.get(index);
+
+
+            if(unit.checkReturnDate(inputDate)) {
+                double cost = unit.getCost(date);
+                JOptionPane.showMessageDialog(null, "Thanks" + unit.getNameOfRenter() +
+                        " for returning " + unit.getTitle() + "\nYou owe: " + numFormatter.format(cost) +
+                        " dollars");
+
+                list.remove(unit, index);
+            }else{
+                JOptionPane.showMessageDialog(null,
+                        "Return date is invalid or it is before the rented on Date");
+            }
+
+        }catch(ArrayIndexOutOfBoundsException a){
+            JOptionPane.showMessageDialog(null, "Please select a unit to return it");
+        }
+    }
 
     public static void main(String[] args) {
 		new RentalStoreGUI();
