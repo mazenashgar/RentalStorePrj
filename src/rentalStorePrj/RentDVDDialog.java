@@ -146,11 +146,10 @@ public class RentDVDDialog extends Dialog implements ActionListener {
 
             //try to save the rent and due back
             try {
-                dateEntered = rentDate;
 
-                temp = DATE_FORMAT.parse(dateEntered);
+                temp = DATE_FORMAT.parse(rentDate);
 
-                if(!checkDateRented(dateEntered)){
+                if(!checkDateRented(rentDate)){
                     return false;
                 }
 
@@ -165,10 +164,9 @@ public class RentDVDDialog extends Dialog implements ActionListener {
 
             try {
 
-                dateEntered = dueDate;
-                temp = DATE_FORMAT.parse(dateEntered);
+                temp = DATE_FORMAT.parse(dueDate);
 
-                if(!checkDateDue(dateEntered)){
+                if(!checkDateDue(dueDate, rentDate)){
                     return false;
                 }
 

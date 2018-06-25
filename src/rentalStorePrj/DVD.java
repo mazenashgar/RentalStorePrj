@@ -1,6 +1,7 @@
 package rentalStorePrj;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -22,14 +23,6 @@ public class DVD implements Serializable {
 
     /** The name of the person who is renting the DVD */
     private String nameOfRenter;
-
-    protected int monthReturned;
-    protected int dayReturned;
-    protected int yearReturned;
-    protected int monthDue;
-    protected int dayDue;
-    protected int yearDue;
-
 
     private final double DVD_RENT_FEE = 1.20;
     private final double DVD_LATE_FEE = 2.00;
@@ -83,33 +76,15 @@ public class DVD implements Serializable {
 
 
         DATE_FORMAT.setCalendar(dateReturned);
-        String returnedOn = DATE_FORMAT.format(dateReturned.getTime());
-        String dueDate = DATE_FORMAT.format(getDueBack());
 
-        setReturnDate(returnedOn, dueDate);
+        GregorianCalendar dueDate = new GregorianCalendar();
+        dueDate.setTime(dueBack);
 
-        if (yearDue < yearReturned){
-            total += DVD_LATE_FEE;
-        }else if( monthDue < monthReturned){
-            total += DVD_LATE_FEE;
-        }else if(dayDue < dayReturned){
+        if (dateReturned.after(dueDate)){
             total += DVD_LATE_FEE;
         }
 
         return total;
-    }
-
-    protected void setReturnDate (String returnedOn, String dueDate){
-
-        checkReturnDate(returnedOn);
-        String [] due;
-
-        due = dueDate.split("/");
-
-        monthDue = Integer.parseInt(due[0]);
-        dayDue = Integer.parseInt(due[1]);
-        yearDue = Integer.parseInt(due[2]);
-
     }
 
     protected boolean checkReturnDate(String dateReturned){
@@ -117,16 +92,9 @@ public class DVD implements Serializable {
         String [] returnedDate;
         returnedDate = dateReturned.split("/");
 
-        monthReturned = Integer.parseInt(returnedDate[0]);
-        dayReturned = Integer.parseInt(returnedDate[1]);
-        yearReturned = Integer.parseInt(returnedDate[2]);
-
-        String rentedDate = DATE_FORMAT.format(getBought());
-        String[] rented = rentedDate.split("/");
-
-        int monthRented = Integer.parseInt(rented[0]);
-        int dayRented = Integer.parseInt(rented[1]);
-        int yearRented = Integer.parseInt(rented[2]);
+        int monthReturned = Integer.parseInt(returnedDate[0]);
+        int dayReturned = Integer.parseInt(returnedDate[1]);
+        int yearReturned = Integer.parseInt(returnedDate[2]);
 
         if(yearReturned < 1){
             return false;
@@ -136,13 +104,24 @@ public class DVD implements Serializable {
             return false;
         }
 
-        if(yearRented > yearReturned){
-            return false;
-        }else if (yearRented == yearReturned && monthRented > monthReturned){
-            return false;
-        }else if(yearRented == yearReturned && monthRented == monthReturned && dayRented > dayReturned){
+        GregorianCalendar calendarReturn = new GregorianCalendar();
+        GregorianCalendar calendarBought = new GregorianCalendar();
+        Date returnDate;
+
+        try {
+            returnDate = DATE_FORMAT.parse(dateReturned);
+
+        }catch (ParseException e){
             return false;
         }
+
+        calendarReturn.setTime(returnDate);
+        calendarBought.setTime(bought);
+
+        if(calendarBought.after(calendarReturn)){
+            return false;
+        }
+
         return true;
     }
 

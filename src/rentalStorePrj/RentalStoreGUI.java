@@ -253,13 +253,12 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
             int index = JListArea.getSelectedIndex();
             DVD unit = list.get(index);
 
-
             if(unit.checkReturnDate(inputDate)) {
 
                 double cost = unit.getCost(date);
 
                 JOptionPane.showMessageDialog(null,
-                        "Thanks" + unit.getNameOfRenter() +
+                        "Thanks " + unit.getNameOfRenter() +
                                 " for returning " + unit.getTitle() + "\nYou owe: "
                                 + numFormatter.format(cost) + " dollars",
                         "Returned", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -276,7 +275,6 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                     "Please select a unit to return it", "Error",
                     JOptionPane.ERROR_MESSAGE, icon);
-            returnUnit();
         }
     }
 

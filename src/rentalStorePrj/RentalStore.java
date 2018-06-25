@@ -66,7 +66,7 @@ public class RentalStore extends AbstractListModel {
                 + ",\t\t" + "Due Date: " + (DATE_FORMAT.format(listDVDs.get(index).getDueBack()));
 
         if (unit instanceof Game)
-            line += ",\t\t"+ "Car Player: " + ((Game)unit).getPlayer();
+            line += ",\t\t"+ "Console: " + ((Game)unit).getPlayer();
 
         return line;
     }
@@ -85,6 +85,7 @@ public class RentalStore extends AbstractListModel {
     }
 
     public void loadFromSerializable(String filename) {
+
         try {
             FileInputStream fis = new FileInputStream(filename);
             ObjectInputStream is = new ObjectInputStream(fis);
@@ -124,44 +125,48 @@ public class RentalStore extends AbstractListModel {
         int index = 0;
         Scanner fileReader;
         listDVDs = new ArrayList<DVD>();
-        String temp;
+        String temp = null;
         String[] s;
 
         try{
             fileReader = new Scanner(new File(filename));
 
-            while(fileReader.hasNextLine()){
+            while(fileReader.hasNextLine()) {
 
                 temp = fileReader.nextLine();
                 s = temp.split("\t\t");
 
-                String name = s[0].substring(5,s[0].length()-1);
+                String name = s[0].substring(6, s[0].length() - 1);
                 String title;
-                if(s[1].substring(0,5).equals("Game:")){
-                    title = s[1].substring(6, s[1].length()-1);
-                }else{
-                    title = s[1].substring(5, s[1].length()-1);
+                if (s[1].substring(0, 5).equals("Game:")) {
+                    title = s[1].substring(6, s[1].length() - 1);
+                } else {
+                    title = s[1].substring(5, s[1].length() - 1);
                 }
                 String rentDate = s[2].substring(8);
                 String dueDate = s[3].substring(10);
 
 
-                if(s.length == 4){
-                    DVD dvd = new DVD(DATE_FORMAT.parse(rentDate), DATE_FORMAT.parse(dueDate),title,name);
+                if (s.length == 4) {
+                    DVD dvd = new DVD(DATE_FORMAT.parse(rentDate), DATE_FORMAT.parse(dueDate), title, name);
                     add(dvd);
 
-                }else if (s.length == 5){
-                    String player = s[4].substring(12);
-                    Game game = new Game(DATE_FORMAT.parse(rentDate), DATE_FORMAT.parse(dueDate),title,name, PlayerType.valueOf(player));
+                } else if (s.length == 5) {
+                    String player = s[4].substring(9);
+                    Game game = new Game(DATE_FORMAT.parse(rentDate), DATE_FORMAT.parse(dueDate), title, name, PlayerType.valueOf(player));
                     add(game);
                 }
                 update(index);
                 index++;
             }
-
         }catch (Exception ex){
             JOptionPane.showMessageDialog(null,"Error in load text from" + filename);
         }
+
+        if(temp == null){
+            JOptionPane.showMessageDialog(null,"Error in load text from" + filename);
+        }
+
     }
 
     public boolean findLate (String lateOn, ArrayList lateList) throws ParseException{

@@ -27,25 +27,18 @@ public class Game extends DVD {
 
     public void setPlayer(PlayerType player) {
         this.player = player;
-
     }
 
     public double getCost(GregorianCalendar dateReturned) {
 
         double total = GAME_RENT_FEE;
 
-
         DATE_FORMAT.setCalendar(dateReturned);
-        String returnedOn = DATE_FORMAT.format(dateReturned.getTime());
-        String dueDate = DATE_FORMAT.format(getDueBack());
 
-        setReturnDate(returnedOn, dueDate);
+        GregorianCalendar dueDate = new GregorianCalendar();
+        dueDate.setTime(getDueBack());
 
-        if (yearDue < yearReturned){
-            total += GAME_LATE_FEE;
-        }else if(monthDue < monthReturned){
-            total += GAME_LATE_FEE;
-        }else if(dayDue < dayReturned){
+        if (dateReturned.after(dueDate)) {
             total += GAME_LATE_FEE;
         }
 

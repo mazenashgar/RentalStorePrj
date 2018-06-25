@@ -3,6 +3,8 @@ package rentalStorePrj;
 import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Dialog extends JDialog {
 
@@ -15,15 +17,6 @@ public class Dialog extends JDialog {
     protected JButton cancelButton;
     protected boolean closeStatus;
     protected SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
-    protected String dateEntered;
-
-    protected int monthRented;
-    protected int dayRented;
-    protected int yearRented;
-    protected int monthDue;
-    protected int dayDue;
-    protected int yearDue;
-
     protected ImageIcon icon;
 
     public Dialog(JFrame parent, boolean model) {
@@ -35,6 +28,9 @@ public class Dialog extends JDialog {
     protected boolean checkDateRented(String dateRented){
 
         String[] s = dateRented.split("/");
+        int monthRented;
+        int dayRented;
+        int yearRented;
 
         try {
             monthRented = Integer.parseInt(s[0]);
@@ -72,9 +68,13 @@ public class Dialog extends JDialog {
         }
     }
 
-    protected boolean checkDateDue(String dateDue){
+    protected boolean checkDateDue(String dateDue, String dateRented){
 
         String[] s = dateDue.split("/");
+        int monthDue;
+        int dayDue;
+        int yearDue;
+
         try{
             monthDue = Integer.parseInt(s[0]);
             dayDue = Integer.parseInt(s[1]);
@@ -106,11 +106,22 @@ public class Dialog extends JDialog {
                     "Day due back is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-        } else if(yearDue < yearRented){
-            mistake = true;
-        } else if (yearDue == yearRented && monthDue < monthRented){
-            mistake = true;
-        } else if (yearDue == yearRented && monthDue == monthRented && dayDue < dayRented){
+        }
+
+        GregorianCalendar calendarDue = new GregorianCalendar();
+        GregorianCalendar calendarRented = new GregorianCalendar();
+        Date dueDate;
+        Date rentDate;
+
+        try {
+            dueDate = DATE_FORMAT.parse(dateDue);
+            rentDate = DATE_FORMAT.parse(dateRented);
+
+        }catch (ParseException e){
+            return false;
+        }
+
+        if(rentDate.after(dueDate)){
             mistake = true;
         }
 
