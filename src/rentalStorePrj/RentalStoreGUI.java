@@ -196,29 +196,31 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null,
                             "Please enter a valid date to find late units",
                             "Error", JOptionPane.ERROR_MESSAGE, icon);
-                    return;
+                    lateUnits();
+                }
+
+                if (lateList.size() == 0) {
+
+                    JOptionPane.showMessageDialog(null,
+                            "No units are late on " + lateOnDate,
+                            "Error", JOptionPane.INFORMATION_MESSAGE, icon);
+                } else {
+
+                    //Show list
+                    JOptionPane.showMessageDialog(null,
+                            new JList(lateList.toArray()), "Late Units",
+                            JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,
                         "Please enter a valid date to find late units",
                         "Error", JOptionPane.ERROR_MESSAGE, icon);
-                return;
+                lateUnits();
             }
 
-            if (lateList.size() == 0) {
-
-                JOptionPane.showMessageDialog(null,
-                        "No units are late on " + lateOnDate,
-                        "Error", JOptionPane.INFORMATION_MESSAGE, icon);
-
-            } else {
-
-                //Show list
-                JOptionPane.showMessageDialog(null,
-                        new JList(lateList.toArray()), "Late Units",
-                        JOptionPane.INFORMATION_MESSAGE, icon);
-            }
+        }else{
+            return;
         }
     }
 
@@ -275,6 +277,8 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                     "Please select a unit to return it", "Error",
                     JOptionPane.ERROR_MESSAGE, icon);
+        }catch(NumberFormatException n){
+            return;
         }
     }
 
