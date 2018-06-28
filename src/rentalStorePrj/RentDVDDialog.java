@@ -108,6 +108,14 @@ public class RentDVDDialog extends Dialog implements ActionListener {
         rentDate = unit.DelLeadWhiteSpace(rentDate);
         dueDate = unit.DelLeadWhiteSpace(dueDate);
 
+        if(!checkDateRented(rentDate)){
+            return false;
+        }
+
+        if(!checkDateDue(dueDate, rentDate)){
+            return false;
+        }
+
         if(name.equals("")){
 
             JOptionPane.showMessageDialog(null,
@@ -148,11 +156,6 @@ public class RentDVDDialog extends Dialog implements ActionListener {
             try {
 
                 temp = DATE_FORMAT.parse(rentDate);
-
-                if(!checkDateRented(rentDate)){
-                    return false;
-                }
-
                 unit.setBought(temp);
 
             } catch (ParseException p) {
@@ -165,11 +168,6 @@ public class RentDVDDialog extends Dialog implements ActionListener {
             try {
 
                 temp = DATE_FORMAT.parse(dueDate);
-
-                if(!checkDateDue(dueDate, rentDate)){
-                    return false;
-                }
-
                 unit.setDueBack(temp);
 
             } catch (ParseException p) {

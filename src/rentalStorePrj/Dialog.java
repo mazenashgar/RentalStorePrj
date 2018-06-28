@@ -19,6 +19,8 @@ public class Dialog extends JDialog {
     protected SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
     protected ImageIcon icon;
 
+    public Dialog(){}
+
     public Dialog(JFrame parent, boolean model) {
         super(parent, model);
 
@@ -31,6 +33,8 @@ public class Dialog extends JDialog {
         int monthRented;
         int dayRented;
         int yearRented;
+
+        GregorianCalendar gc = new GregorianCalendar();
 
         try {
             monthRented = Integer.parseInt(s[0]);
@@ -45,27 +49,61 @@ public class Dialog extends JDialog {
             return false;
         }
 
-        if(yearRented < 0){
+        if(yearRented < 0) {
             JOptionPane.showMessageDialog(null,
                     "Year rented on is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-        }
-
-        if(monthRented < 1 || monthRented > 12){
+        } else if (dayRented < 1 || dayRented > 31){
+            JOptionPane.showMessageDialog(null,
+                     "Day rented on is incorrect",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        } else if(monthRented < 1 || monthRented > 12){
             JOptionPane.showMessageDialog(null,
                     "Month rented on is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-        } else if (dayRented < 1 || dayRented > 31){
+        } else if (monthRented == 4 && dayRented > 30){
             JOptionPane.showMessageDialog(null,
-                    "Day rented on is incorrect",
+                    "April has only 30 days",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
+        } else if(monthRented == 6 && dayRented > 30){
+            JOptionPane.showMessageDialog(null,
+                    "June has only 30 days",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        } else if(monthRented == 9 && dayRented > 30){
+            JOptionPane.showMessageDialog(null,
+                    "September has only 30 days",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        } else if(monthRented == 11 && dayRented > 30){
+            JOptionPane.showMessageDialog(null,
+                    "November has only 30 days",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        }  else if (!gc.isLeapYear(yearRented)){
+            if (monthRented == 2 && dayRented > 28){
+                JOptionPane.showMessageDialog(null,
+                        "February has only 28 days on "+
+                                yearRented,
+                        "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+                return false;
+            }
+        } else if(gc.isLeapYear(yearRented)){
+            if (monthRented == 2 && dayRented > 29) {
+                JOptionPane.showMessageDialog(null,
+                        "February has only 29 days on "+
+                                yearRented,
+                        "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+                return false;
+            }
         }
-        else{
-            return true;
-        }
+
+        return true;
+
     }
 
     protected boolean checkDateDue(String dateDue, String dateRented){
@@ -74,6 +112,8 @@ public class Dialog extends JDialog {
         int monthDue;
         int dayDue;
         int yearDue;
+
+        GregorianCalendar gc = new GregorianCalendar();
 
         try{
             monthDue = Integer.parseInt(s[0]);
@@ -106,10 +146,44 @@ public class Dialog extends JDialog {
                     "Day due back is incorrect",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
+        } else if (monthDue == 4 && dayDue > 30){
+            JOptionPane.showMessageDialog(null,
+                    "April has only 30 days",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        } else if(monthDue == 6 && dayDue > 30){
+            JOptionPane.showMessageDialog(null,
+                    "June has only 30 days",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        } else if(monthDue == 9 && dayDue > 30){
+            JOptionPane.showMessageDialog(null,
+                    "September has only 30 days",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        } else if(monthDue == 11 && dayDue > 30){
+            JOptionPane.showMessageDialog(null,
+                    "November has only 30 days",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        } else if(!gc.isLeapYear(yearDue)){
+            if (monthDue == 2 && dayDue > 28) {
+                JOptionPane.showMessageDialog(null,
+                        "February has only 28 days on "+
+                                yearDue,
+                        "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+                return false;
+            }
+        } else if(gc.isLeapYear(yearDue)) {
+            if (monthDue == 2 && dayDue > 29) {
+                JOptionPane.showMessageDialog(null,
+                        "February has only 29 days on "+
+                                yearDue,
+                        "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+                return false;
+            }
         }
 
-        GregorianCalendar calendarDue = new GregorianCalendar();
-        GregorianCalendar calendarRented = new GregorianCalendar();
         Date dueDate;
         Date rentDate;
 

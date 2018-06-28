@@ -187,29 +187,35 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
                         "\nPlease use the following format: MM/DD/YYYY", "Late Units Finder",
                 JOptionPane.QUESTION_MESSAGE, icon, null, null);
 
+        Dialog dialog = new Dialog();
+
         if(lateOnDate != null) {
             try {
 
                 lateOnDate = list.checkWhiteSpace(lateOnDate);
 
-                if (!list.findLate(lateOnDate, lateList)) {
-                    JOptionPane.showMessageDialog(null,
-                            "Please enter a valid date to find late units",
-                            "Error", JOptionPane.ERROR_MESSAGE, icon);
+                if(dialog.checkDateRented(lateOnDate)) {
+                    if (!list.findLate(lateOnDate, lateList)) {
+
+                        JOptionPane.showMessageDialog(null,
+                                "Please enter a valid date to find late units",
+                                "Error", JOptionPane.ERROR_MESSAGE, icon);
+                        lateUnits();
+                    } else if (lateList.size() == 0) {
+
+                        JOptionPane.showMessageDialog(null,
+                                "No units are late on " + lateOnDate,
+                                "Error", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                    } else {
+
+                        //Show list
+                        JOptionPane.showMessageDialog(null,
+                                new JList(lateList.toArray()), "Late Units",
+                                JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+                }else{
                     lateUnits();
-                }
-
-                if (lateList.size() == 0) {
-
-                    JOptionPane.showMessageDialog(null,
-                            "No units are late on " + lateOnDate,
-                            "Error", JOptionPane.INFORMATION_MESSAGE, icon);
-                } else {
-
-                    //Show list
-                    JOptionPane.showMessageDialog(null,
-                            new JList(lateList.toArray()), "Late Units",
-                            JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
             } catch (Exception e) {
@@ -234,12 +240,19 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         NumberFormat numFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+        Dialog dialog = new Dialog();
 
         try {
             if (inputDate != null) {
                 inputDate = list.checkWhiteSpace(inputDate);
-                Date newDate = df.parse(inputDate);
-                date.setTime(newDate);
+
+                if(dialog.checkDateRented(inputDate)){
+                    Date newDate = df.parse(inputDate);
+                    date.setTime(newDate);
+                } else {
+                    returnUnit();
+                    return;
+                }
             }
             else {
                 return;

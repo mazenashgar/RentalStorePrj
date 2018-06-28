@@ -91,7 +91,8 @@ public class RentalStore extends AbstractListModel {
             ObjectInputStream is = new ObjectInputStream(fis);
 
             listDVDs = (ArrayList<DVD>) is.readObject();
-            fireIntervalAdded(this, 0, listDVDs.size() - 1);
+
+            fireIntervalAdded(this, 0, listDVDs.size());
             is.close();
         }
         catch (Exception ex) {
@@ -177,24 +178,39 @@ public class RentalStore extends AbstractListModel {
         int lateOnDay = Integer.parseInt(lateOnDate[1]);
         int lateOnYear = Integer.parseInt(lateOnDate[2]);
 
+        GregorianCalendar gc = new GregorianCalendar();
+
         if(lateOnYear < 1){
             return false;
-        }
-        if(lateOnMonth > 12 || lateOnMonth < 1){
+        } else if(lateOnMonth > 12 || lateOnMonth < 1){
             return false;
-        }else if(lateOnDay > 31 || lateOnDay < 1){
+        } else if(!gc.isLeapYear(lateOnYear)){
+            if (lateOnMonth == 2 && lateOnDay > 28){
+                return false;
+            }
+        } else if(gc.isLeapYear(lateOnYear)){
+            if (lateOnMonth == 2 && lateOnDay > 29){
+                return false;
+            }
+        } else if ((lateOnMonth == 4 || lateOnMonth == 6 ||
+                lateOnMonth == 9 || lateOnMonth == 11) &&
+                lateOnDay > 30){
+            return false;
+        } else if(lateOnDay > 31 || lateOnDay < 1){
             return false;
         }
 
         Date lateDate = DATE_FORMAT.parse(lateOn);
         long diff;
+        String info;
 
         for (int i = 0; i < listDVDs.size(); i++) {
 
             if (lateDate.after(listDVDs.get(i).getDueBack())) {
 
                 diff = (lateDate.getTime() - listDVDs.get(i).getDueBack().getTime())/ (1000 * 60 * 60 * 24);
-                lateList.add(i, "" + diff + " Day(s) late on: " + listDVDs.get(i).getTitle());
+                info = linePrinter(i);
+                lateList.add(i, "" + diff + " Day(s) late for:" + info.substring(5));
             }
         }
 

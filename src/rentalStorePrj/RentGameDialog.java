@@ -13,7 +13,8 @@ public class RentGameDialog  extends Dialog implements ActionListener {
 
     private Game unit;
     private PlayerType player;
-    private JComboBox playerOptions;
+    //private JComboBox playerOptions;
+    private JTextField console;
 
     public RentGameDialog(JFrame parent, Game d) {
         // call parent and create a 'modal' dialog
@@ -42,10 +43,13 @@ public class RentGameDialog  extends Dialog implements ActionListener {
         titleTxt = new JTextField("Super Mario III", 30);
         textPanel.add(titleTxt);
 
-        textPanel.add(new JLabel("Player Type"));
-        playerOptions = new JComboBox<Enum>(PlayerType.values());
-        textPanel.add(playerOptions);
+        //textPanel.add(new JLabel("Player Type;;"));
+        //playerOptions = new JComboBox<Enum>(PlayerType.values());
+        //textPanel.add(playerOptions);
 
+        textPanel.add(new JLabel("Console:"));
+        console = new JTextField(30);
+        textPanel.add(console);
 
         Date date = Calendar.getInstance().getTime();
 
@@ -108,11 +112,21 @@ public class RentGameDialog  extends Dialog implements ActionListener {
         String title = titleTxt.getText();
         String rentDate = rentedOnTxt.getText();
         String dueDate = DueBackTxt.getText();
+        String player = console.getText();
 
         name = unit.DelLeadWhiteSpace(name);
         title = unit.DelLeadWhiteSpace(title);
         rentDate = unit.DelLeadWhiteSpace(rentDate);
         dueDate = unit.DelLeadWhiteSpace(dueDate);
+        player = unit.DelLeadWhiteSpace(player);
+
+        if(!checkDateRented(rentDate)){
+            return false;
+        }
+
+        if(!checkDateDue(dueDate, rentDate)){
+            return false;
+        }
 
         if(name.equals("")){
 
@@ -142,13 +156,32 @@ public class RentGameDialog  extends Dialog implements ActionListener {
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
-        } else {
+        } else if(player.equals("")){
+            JOptionPane.showMessageDialog(null,
+                    "Please enter a console",
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+            return false;
+        }
+        else {
 
             unit.setNameOfRenter(name);
             unit.setTitle(title);
-            player = (PlayerType) playerOptions.getSelectedItem();
-            unit.setPlayer(player);
+            //player = (PlayerType) playerOptions.getSelectedItem();
+            //unit.setPlayer(player);
+            PlayerType p;
 
+            try{
+                p = PlayerType.valueOf(player);
+            }catch (IllegalArgumentException e){
+                JOptionPane.showMessageDialog(null,
+                        "We don't have that console " +
+                                "\nYour options are:\n" +
+                                "Xbox360, Xbox1, PS4, WiiU, or NintendoSwitch",
+                        "ERROR", JOptionPane.ERROR_MESSAGE, icon);
+                return false;
+            }
+
+            unit.setPlayer(p);
 
             Date temp;
 
@@ -156,14 +189,9 @@ public class RentGameDialog  extends Dialog implements ActionListener {
             try {
 
                 temp = DATE_FORMAT.parse(rentDate);
-
-                if(!checkDateRented(rentDate)){
-                    return false;
-                }
-
                 unit.setBought(temp);
 
-            } catch (ParseException p) {
+            } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null,
                         "Date rented on is incorrect",
                         "ERROR", JOptionPane.ERROR_MESSAGE, icon);
@@ -173,14 +201,9 @@ public class RentGameDialog  extends Dialog implements ActionListener {
             try {
 
                 temp = DATE_FORMAT.parse(dueDate);
-
-                if(!checkDateDue(dueDate, rentDate)){
-                    return false;
-                }
-
                 unit.setDueBack(temp);
 
-            } catch (ParseException p) {
+            } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null,
                         "Due back date is incorrect",
                         "ERROR", JOptionPane.ERROR_MESSAGE, icon);
