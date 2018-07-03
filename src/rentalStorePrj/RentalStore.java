@@ -371,7 +371,7 @@ public class RentalStore extends AbstractListModel {
 
             //If an error happens, tell the user
             JOptionPane.showMessageDialog(null,
-                    "Error in load text from " + filename);
+                    "FYI: This file is empty");
         }
 
     }

@@ -8,37 +8,64 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
-
+/**********************************************************************
+ * A class that creates a display for entering Game objects into the
+ * rentalStoreGUI and checks that the input is valid.
+ *
+ * @author Mazen Ashgar and Max Carson
+ * @version 6/30/2018
+ *********************************************************************/
 public class RentGameDialog  extends Dialog implements ActionListener {
 
+    /** Game object used in saving player entered game Info*/
     private Game unit;
+
+    /** The console the renter rented the game for*/
     private PlayerType player;
+
     //private JComboBox playerOptions;
+
+    /** Used to display the playerType*/
     private JTextField console;
 
+    /******************************************************************
+     * A constructor for the RentGameDialog Class that creates a
+     * display for user to enter a name, title, rental date, due date,
+     * and player type for a Game object.
+     *
+     *@param parent - A Jframe that holds the display
+     *@param d - A Game thats text will be displayed
+     ******************************************************************/
     public RentGameDialog(JFrame parent, Game d) {
-        // call parent and create a 'modal' dialog
+
+        // Calls the parent class and create a 'modal' dialog
         super(parent, true);
 
+        // Set the Jframe title
         setTitle("Rent a Game:");
-        closeStatus = false;
-        setSize(400, 200);
 
+        // Sets closeStatus to false
+        closeStatus = false;
+
+        // Sets the size of the JFrame
+        setSize(300, 300);
+
+        // Sets unit to d
         unit = d;
 
-        // prevent user from closing window
+        // Prevent user from closing window
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        // instantiate and display text fields
-
+        // Instantiate and display text fields
         JPanel textPanel = new JPanel();
         textPanel.setLayout(new GridLayout(6, 2));
 
-
+        // Creates a text panel to enter a renters name
         textPanel.add(new JLabel("Your Name:"));
         renterTxt = new JTextField("John Doe", 30);
         textPanel.add(renterTxt);
 
+        // Creates a text panel to enter a game title
         textPanel.add(new JLabel("Title of Game:"));
         titleTxt = new JTextField("Super Mario III", 30);
         textPanel.add(titleTxt);
@@ -47,87 +74,121 @@ public class RentGameDialog  extends Dialog implements ActionListener {
         //playerOptions = new JComboBox<Enum>(PlayerType.values());
         //textPanel.add(playerOptions);
 
+        // Creates a text panel to enter the console rented on
         textPanel.add(new JLabel("Console:"));
-        console = new JTextField(30);
+        console = new JTextField("WiiU" , 30);
         textPanel.add(console);
 
+        // Creates a text panel to enter the rental date
         Date date = Calendar.getInstance().getTime();
-
-
         textPanel.add(new JLabel("Rented on Date: "));
         rentedOnTxt = new JTextField(DATE_FORMAT.format(date), 30);
         textPanel.add(rentedOnTxt);
 
+        // Adds one to the current date for the due date
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.DATE, 1);  // number of days to add
         date = c.getTime();
 
+        // Creates a text panel to enter the due date
         textPanel.add(new JLabel("Due Back Date: "));
         DueBackTxt = new JTextField(DATE_FORMAT.format(date),15);
         textPanel.add(DueBackTxt);
 
-
+        //Adds the text panels to the content panel
         getContentPane().add(textPanel, BorderLayout.CENTER);
 
-        // Instantiate and display two buttons
-        okButton = new JButton("OK");
-        cancelButton = new JButton("Cancel");
+        // Instantiate display for buttons
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(okButton);
-        buttonPanel.add(cancelButton);
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+
+        //Adds the OK button
+        okButton = new JButton("OK");
+        buttonPanel.add(okButton);
         okButton.addActionListener(this);
+
+        //Adds the cancel button
+        cancelButton = new JButton("Cancel");
+        buttonPanel.add(cancelButton);
         cancelButton.addActionListener(this);
 
-        setSize(300, 300);
+        //Sets the Jframe to visible
         setVisible(true);
     }
 
+    /******************************************************************
+     * A method used to determine what the program does when the user
+     * clicks on the OK or cancel button.
+     *
+     * @param e - An actionEvent when users clicks on OK or cancel
+     * button
+     *****************************************************************/
     @Override
     public void actionPerformed(ActionEvent e) {
 
         JButton clicked = (JButton) e.getSource();
 
-        // if OK clicked then fill the object
+        // If the okay button is clicked it checks the input
         if (clicked == okButton) {
 
-            //if the input is all correct, save info to the object, else don't
+            /*if the input is correct, it saves input to the game
+             object
+             */
             closeStatus = inputCheck();
 
         }
+
+        //If the cancel button is clicked it cancel the input
         else if(clicked == cancelButton){
 
-            //DON'T save anything to the object
+            //Sets closeStatus to false and does not save the input
             closeStatus = false;
 
-            //If all of the information is correct, make the dialog disappear
+            //Close the dialog box
             dispose();
         }
     }
 
+    /******************************************************************
+     * A method used to check the user inputed information. Displays
+     * a variety of message associated with kind of error the user made
+     *
+     * @return returns true if the user input is correct.
+     *****************************************************************/
     private boolean inputCheck(){
 
+        //get the game info from the text fields
         String name = renterTxt.getText();
         String title = titleTxt.getText();
         String rentDate = rentedOnTxt.getText();
         String dueDate = DueBackTxt.getText();
         String player = console.getText();
 
+        //deletes any leading white space
         name = unit.DelLeadWhiteSpace(name);
         title = unit.DelLeadWhiteSpace(title);
         rentDate = unit.DelLeadWhiteSpace(rentDate);
         dueDate = unit.DelLeadWhiteSpace(dueDate);
         player = unit.DelLeadWhiteSpace(player);
 
+        /* Returns false if the date rented is not correct or
+         not formatted correctly
+         */
         if(!checkDateRented(rentDate)){
             return false;
         }
 
+        /*Returns false if the dueDate is after the rent date or not
+         properly formatted
+         */
         if(!checkDateDue(dueDate, rentDate)){
             return false;
         }
 
+        /*Returns false if the name is empty and displays an error
+         message
+         */
         if(name.equals("")){
 
             JOptionPane.showMessageDialog(null,
@@ -135,33 +196,60 @@ public class RentGameDialog  extends Dialog implements ActionListener {
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
-        } else if(title.equals("")){
+
+        }
+
+        /*Return false if the game title is empty and displays an
+         error message
+         */
+        else if(title.equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter the title",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
-        } else if(rentDate.equals("")){
+
+        }
+
+        /*Returns false if the date is empty and displays an
+         error message
+         */
+        else if(rentDate.equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter the date rented on",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
-        } else if(dueDate.equals("")){
+
+        }
+
+        /*Returns false if the due date is empty and displays an
+         error message
+         */
+        else if(dueDate.equals("")){
 
             JOptionPane.showMessageDialog(null,
                     "Please enter the due back date",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
 
-        } else if(player.equals("")){
+
+        }
+
+
+        /*Returns false if the player field is empty and displays an
+         error message
+         */
+        else if(player.equals("")){
             JOptionPane.showMessageDialog(null,
                     "Please enter a console",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
         }
+
+        //Sets the renters name and the game title
         else {
 
             unit.setNameOfRenter(name);
@@ -170,27 +258,34 @@ public class RentGameDialog  extends Dialog implements ActionListener {
             //unit.setPlayer(player);
             PlayerType p;
 
+            //Tries to parse the console name
             try{
                 p = PlayerType.valueOf(player);
+
+                /*Catches an exception if input differs from player
+                 types and displays an error message telling the user
+                 */
             }catch (IllegalArgumentException e){
                 JOptionPane.showMessageDialog(null,
                         "We don't have that console " +
                                 "\nYour options are:\n" +
-                                "Xbox360, Xbox1, PS4, WiiU, or NintendoSwitch",
+                                "Xbox360, Xbox1, PS4, WiiU, or"
+                                + " NintendoSwitch",
                         "ERROR", JOptionPane.ERROR_MESSAGE, icon);
                 return false;
             }
 
+            //Sets the console type
             unit.setPlayer(p);
 
             Date temp;
 
-            //try to save the rent and due back
+            //tries to set the rental date
             try {
-
                 temp = DATE_FORMAT.parse(rentDate);
                 unit.setBought(temp);
 
+                //Catches error if the it cannot parse the date
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null,
                         "Date rented on is incorrect",
@@ -198,11 +293,14 @@ public class RentGameDialog  extends Dialog implements ActionListener {
                 return false;
             }
 
+            //tries to set the due date
             try {
-
                 temp = DATE_FORMAT.parse(dueDate);
                 unit.setDueBack(temp);
 
+                /*Catches exception if unable to parse date and
+                 displays error
+                 */
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null,
                         "Due back date is incorrect",
@@ -210,9 +308,10 @@ public class RentGameDialog  extends Dialog implements ActionListener {
                 return false;
             }
 
-            //If all of the information is correct, make the dialog disappear
+            //close the dialog box if the input is correct
             dispose();
 
+            //returns true if the input is correct
             return true;
         }
     }
