@@ -256,7 +256,8 @@ public class RentalStore extends AbstractListModel {
         try {
 
             //create the file
-            out = new PrintWriter(new BufferedWriter(new FileWriter(filename)));
+            out = new PrintWriter(new BufferedWriter
+                    (new FileWriter(filename)));
 
             //while there are units in the list, print them in the file
             while(index < listDVDs.size()){
@@ -270,8 +271,8 @@ public class RentalStore extends AbstractListModel {
         catch (IOException ex) {
 
             //If an error happens, tell the user
-            JOptionPane.showMessageDialog(null,"Error in saving text to " + filename);
-
+            JOptionPane.showMessageDialog(null,
+                    "Error in saving text to " + filename);
         }
     }
 
@@ -373,7 +374,6 @@ public class RentalStore extends AbstractListModel {
             JOptionPane.showMessageDialog(null,
                     "FYI: This file is empty");
         }
-
     }
 
     /******************************************************************
@@ -391,6 +391,8 @@ public class RentalStore extends AbstractListModel {
      *                  finding the late units
      * @throws ParseException If the date string parameter had
      *                  anything other than integers, throw and error
+     * @throws IllegalArgumentException If the user entered a date
+     *                  with more than 2 "/"
      *****************************************************************/
     public boolean findLate (String lateOn, ArrayList lateList)
             throws ParseException{
@@ -400,6 +402,10 @@ public class RentalStore extends AbstractListModel {
         int lateOnMonth = Integer.parseInt(lateOnDate[0]);
         int lateOnDay = Integer.parseInt(lateOnDate[1]);
         int lateOnYear = Integer.parseInt(lateOnDate[2]);
+
+        if(lateOnDate.length > 3){
+            throw new IllegalArgumentException();
+        }
 
         //create a GregorianCalendar object
         GregorianCalendar gc = new GregorianCalendar();
@@ -471,13 +477,13 @@ public class RentalStore extends AbstractListModel {
                 info = linePrinter(i);
 
                 //add the information to the lateList
-                lateList.add(i, "" + diff + " Day(s) late for:" + info.substring(5));
+                lateList.add(i, "" + diff + " Day(s) late for:"
+                        + info.substring(5));
             }
         }
 
         //the method wasn't interrupted, a list was built
         return true;
-
     }
 
     /******************************************************************

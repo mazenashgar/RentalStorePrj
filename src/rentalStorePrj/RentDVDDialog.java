@@ -1,9 +1,6 @@
-
-
 package rentalStorePrj;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +19,6 @@ public class RentDVDDialog extends Dialog implements ActionListener {
 
     /** Declares a DVD object*/
     private DVD unit;
-
 
     /******************************************************************
      * A constructor for the RentDVDDialog Class that creates a display
@@ -136,7 +132,7 @@ public class RentDVDDialog extends Dialog implements ActionListener {
 
     /******************************************************************
      * A method used to check the user inputed information. Displays
-     * a variety of message associated with kind of error the user made.
+     * a variety of message associated with kind of error the user made
      *
      * @return returns true if the user input is correct.
      *****************************************************************/
@@ -175,8 +171,6 @@ public class RentDVDDialog extends Dialog implements ActionListener {
                     "Please enter renter's name",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-
-
         }
 
         //Returns false if the title is empty
@@ -186,8 +180,6 @@ public class RentDVDDialog extends Dialog implements ActionListener {
                     "Please enter the title",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-
-
         }
 
         //Returns false if the rental date is empty
@@ -197,8 +189,6 @@ public class RentDVDDialog extends Dialog implements ActionListener {
                     "Please enter the date rented on",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-
-
         }
 
         //Returns false if the due date is empty
@@ -208,8 +198,6 @@ public class RentDVDDialog extends Dialog implements ActionListener {
                     "Please enter the due back date",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-
-
         }
 
         //Sets the DVD name and title

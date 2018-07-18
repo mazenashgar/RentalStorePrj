@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c06e6d48-6f94-43ed-9264-22f4513dac19" name="Default" comment="Added scrolling, and finding late units from a date functionality&#10;A new Menu item &quot;Find late&quot; was added. The user can now find units from inputting a specific date which they will be considered late. Also, minor improvements on the code.">
+    <list default="true" id="c06e6d48-6f94-43ed-9264-22f4513dac19" name="Default" comment="Commented, date-error proofed, minor fixes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RentalStorePrj UML.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/RentalStorePrj UML.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/DVD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/DVD.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/Dialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/Dialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/PlayerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/PlayerType.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentDVDDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentDVDDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentGameDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentGameDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentalStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentalStore.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentalStoreGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RentalStorePrj/rentalStorePrj/RentalStoreGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/DVD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/DVD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/Dialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/RentGameDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/RentGameDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,16 +32,12 @@
       <file leaf-file-name="DVD.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/DVD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="130" selection-start-line="130" selection-end-line="130" />
+            <state relative-caret-position="2955">
+              <caret line="216" lean-forward="true" selection-end-line="239" selection-end-column="1" />
               <folding>
-                <element signature="docComment;field#bought#0;class#DVD#0" />
-                <element signature="docComment;field#dueBack#0;class#DVD#0" />
-                <element signature="docComment;field#title#0;class#DVD#0" />
-                <element signature="docComment;field#nameOfRenter#0;class#DVD#0" />
-                <element signature="method#DVD#1;class#DVD#0" />
-                <element signature="method#getCost#0;class#DVD#0" />
-                <element signature="method#checkReturnDate#0;class#DVD#0" />
+                <element signature="method#DVD#0;class#DVD#0" />
+                <element signature="e#4925#4926#0" expanded="true" />
+                <element signature="e#4973#4974#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,13 +46,8 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Game#1;class#Game#0" />
-                <element signature="method#getCost#0;class#Game#0" />
-              </folding>
+            <state relative-caret-position="77">
+              <caret line="77" column="6" lean-forward="true" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -58,38 +55,26 @@
       <file leaf-file-name="RentalStore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="207" selection-start-line="207" selection-end-line="207" />
-              <folding>
-                <element signature="method#RentalStore#0;class#RentalStore#0" />
-                <element signature="method#add#0;class#RentalStore#0" />
-                <element signature="method#remove#0;class#RentalStore#0" />
-                <element signature="method#getElementAt#0;class#RentalStore#0" />
-                <element signature="method#getSize#0;class#RentalStore#0" />
-                <element signature="method#linePrinter#0;class#RentalStore#0" />
-                <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
-                <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
-                <element signature="method#saveAsText#0;class#RentalStore#0" />
-                <element signature="method#loadFromText#0;class#RentalStore#0" />
-              </folding>
+            <state relative-caret-position="77">
+              <caret line="478" column="53" lean-forward="true" selection-start-line="478" selection-start-column="53" selection-end-line="478" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RentalStoreGUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Dialog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Dialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="372" column="59" lean-forward="true" selection-start-line="372" selection-start-column="59" selection-end-line="372" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RentalStoreGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="203" column="55" lean-forward="true" selection-start-line="203" selection-start-column="55" selection-end-line="203" selection-end-column="55" />
-              <folding>
-                <element signature="docComment;field#menus#0;class#RentalStoreGUI#0" />
-                <element signature="docComment;field#fileMenu#0;class#RentalStoreGUI#0" />
-                <element signature="docComment;field#openSerItem#0;class#RentalStoreGUI#0" />
-                <element signature="docComment;field#list#0;class#RentalStoreGUI#0" />
-                <element signature="docComment;field#JListArea#0;class#RentalStoreGUI#0" />
-                <element signature="docComment;field#scrollList#0;class#RentalStoreGUI#0" />
-                <element signature="method#RentalStoreGUI#0;class#RentalStoreGUI#0" />
-              </folding>
+            <state relative-caret-position="122">
+              <caret line="455" column="66" lean-forward="true" selection-start-line="455" selection-start-column="66" selection-end-line="455" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -97,27 +82,21 @@
       <file leaf-file-name="RentDVDDialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="98" column="32" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
+            <state relative-caret-position="92">
+              <caret line="228" column="40" lean-forward="true" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
               <folding>
-                <element signature="method#RentDVDDialog#0;class#RentDVDDialog#0" />
-                <element signature="method#actionPerformed#0;class#RentDVDDialog#0" />
-                <element signature="method#inputCheck#0;class#RentDVDDialog#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;field#unit#0;class#RentDVDDialog#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RentGameDialog.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RentGameDialog.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentGameDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-              <folding>
-                <element signature="method#RentGameDialog#0;class#RentGameDialog#0" />
-                <element signature="method#actionPerformed#0;class#RentGameDialog#0" />
-                <element signature="method#inputCheck#0;class#RentGameDialog#0" />
-              </folding>
+            <state relative-caret-position="198">
+              <caret line="271" column="66" lean-forward="true" selection-start-line="271" selection-start-column="66" selection-end-line="271" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -125,8 +104,8 @@
       <file leaf-file-name="PlayerType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -146,15 +125,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java" />
         <option value="$PROJECT_DIR$/src/rentalStorePrj/TestingDialog.java" />
-        <option value="$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java" />
-        <option value="$PROJECT_DIR$/src/rentalStorePrj/Game.java" />
-        <option value="$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java" />
-        <option value="$PROJECT_DIR$/src/rentalStorePrj/RentGameDialog.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java" />
         <option value="$PROJECT_DIR$/src/rentalStorePrj/DVD.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/Game.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java" />
         <option value="$PROJECT_DIR$/src/rentalStorePrj/Dialog.java" />
         <option value="$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java" />
+        <option value="$PROJECT_DIR$/src/rentalStorePrj/RentGameDialog.java" />
       </list>
     </option>
   </component>
@@ -167,7 +146,33 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="RentalStorePrj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RentalStorePrj" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RentalStorePrj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RentalStorePrj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RentalStorePrj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RentalStorePrj" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rentalStorePrj" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -337,7 +342,28 @@
       <option name="project" value="LOCAL" />
       <updated>1529954766293</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixed loadSerial, checking for valid dates only, added more info on late unit.">
+      <created>1530154203580</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1530154203580</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Commented, date-error proofed.">
+      <created>1530565834545</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1530565834545</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Commented, date-error proofed, minor fixes.">
+      <created>1530583154028</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1530583154028</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -352,19 +378,19 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50078124" side_tool="true" weight="0.328877" />
       <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1462069" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15172414" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1484375" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16962843" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.28827587" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -416,19 +442,14 @@
     <MESSAGE value="Leading white space checked and removed. Minor bug improvements.&#10;The program checks if the user entered any leading white space and removes it using recursion. returning units needed a minor fixing. Also, the user can't enter a negative year when renting. And if the user enters an invalid date when returning or finding late unit, the date input popup will appear again after the error message." />
     <MESSAGE value="If else statement in input check fixed." />
     <MESSAGE value="Decreased instance variables and methods.&#10;Some instance variables can be converted to local variables, and that helped decrease some methods in the DVD and Dialog class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Decreased instance variables and methods.&#10;Some instance variables can be converted to local variables, and that helped decrease some methods in the DVD and Dialog class." />
+    <MESSAGE value="Fixed loadSerial, checking for valid dates only, added more info on late unit." />
+    <MESSAGE value="Commented, date-error proofed." />
+    <MESSAGE value="Commented, date-error proofed, minor fixes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commented, date-error proofed, minor fixes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java</url>
-          <line>183</line>
-          <properties />
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="36" />
+      <option name="time" value="43" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -438,27 +459,10 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" lean-forward="true" selection-end-line="180" />
-          <folding>
-            <element signature="method#RentDVDDialog#0;class#RentDVDDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentDVDDialog#0" />
-            <element signature="method#inputCheck#0;class#RentDVDDialog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentGameDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="30" selection-end-line="188" />
-          <folding>
-            <element signature="method#RentGameDialog#0;class#RentGameDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentGameDialog#0" />
-            <element signature="method#inputCheck#0;class#RentGameDialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -466,15 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="7" lean-forward="true" selection-end-line="197" />
-          <folding>
-            <element signature="docComment;field#menus#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#fileMenu#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#openSerItem#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#list#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#JListArea#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#scrollList#0;class#RentalStoreGUI#0" />
-            <element signature="method#RentalStoreGUI#0;class#RentalStoreGUI#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -482,11 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-          <folding>
-            <element signature="method#Dialog#0;class#Dialog#0" />
-            <element signature="method#checkDateRented#0;class#Dialog#0" />
-            <element signature="method#checkDateDue#0;class#Dialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -501,15 +491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-          <folding>
-            <element signature="docComment;field#bought#0;class#DVD#0" />
-            <element signature="docComment;field#dueBack#0;class#DVD#0" />
-            <element signature="docComment;field#title#0;class#DVD#0" />
-            <element signature="docComment;field#nameOfRenter#0;class#DVD#0" />
-            <element signature="method#DVD#1;class#DVD#0" />
-            <element signature="method#getCost#0;class#DVD#0" />
-            <element signature="method#checkReturnDate#0;class#DVD#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -517,11 +498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="58" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Game#1;class#Game#0" />
-            <element signature="method#getCost#0;class#Game#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -529,18 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
-          <folding>
-            <element signature="method#RentalStore#0;class#RentalStore#0" />
-            <element signature="method#add#0;class#RentalStore#0" />
-            <element signature="method#remove#0;class#RentalStore#0" />
-            <element signature="method#getElementAt#0;class#RentalStore#0" />
-            <element signature="method#getSize#0;class#RentalStore#0" />
-            <element signature="method#linePrinter#0;class#RentalStore#0" />
-            <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
-            <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
-            <element signature="method#saveAsText#0;class#RentalStore#0" />
-            <element signature="method#loadFromText#0;class#RentalStore#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -548,11 +512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1470">
           <caret line="98" column="32" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
-          <folding>
-            <element signature="method#RentDVDDialog#0;class#RentDVDDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentDVDDialog#0" />
-            <element signature="method#inputCheck#0;class#RentDVDDialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -560,11 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="method#RentGameDialog#0;class#RentGameDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentGameDialog#0" />
-            <element signature="method#inputCheck#0;class#RentGameDialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -572,15 +526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="31" column="30" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
-          <folding>
-            <element signature="docComment;field#menus#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#fileMenu#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#openSerItem#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#list#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#JListArea#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#scrollList#0;class#RentalStoreGUI#0" />
-            <element signature="method#RentalStoreGUI#0;class#RentalStoreGUI#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -588,11 +533,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding>
-            <element signature="method#Dialog#0;class#Dialog#0" />
-            <element signature="method#checkDateRented#0;class#Dialog#0" />
-            <element signature="method#checkDateDue#0;class#Dialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -600,15 +540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;field#bought#0;class#DVD#0" />
-            <element signature="docComment;field#dueBack#0;class#DVD#0" />
-            <element signature="docComment;field#title#0;class#DVD#0" />
-            <element signature="docComment;field#nameOfRenter#0;class#DVD#0" />
-            <element signature="method#DVD#1;class#DVD#0" />
-            <element signature="method#getCost#0;class#DVD#0" />
-            <element signature="method#checkReturnDate#0;class#DVD#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -616,11 +547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="method#RentDVDDialog#0;class#RentDVDDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentDVDDialog#0" />
-            <element signature="method#inputCheck#0;class#RentDVDDialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -628,11 +554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="method#RentGameDialog#0;class#RentGameDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentGameDialog#0" />
-            <element signature="method#inputCheck#0;class#RentGameDialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -640,15 +561,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1770">
           <caret line="124" selection-start-line="124" selection-end-line="124" />
-          <folding>
-            <element signature="docComment;field#menus#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#fileMenu#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#openSerItem#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#list#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#JListArea#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#scrollList#0;class#RentalStoreGUI#0" />
-            <element signature="method#RentalStoreGUI#0;class#RentalStoreGUI#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -656,11 +568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="method#Dialog#0;class#Dialog#0" />
-            <element signature="method#checkDateRented#0;class#Dialog#0" />
-            <element signature="method#checkDateDue#0;class#Dialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -675,11 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Game#1;class#Game#0" />
-            <element signature="method#getCost#0;class#Game#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -687,18 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="method#RentalStore#0;class#RentalStore#0" />
-            <element signature="method#add#0;class#RentalStore#0" />
-            <element signature="method#remove#0;class#RentalStore#0" />
-            <element signature="method#getElementAt#0;class#RentalStore#0" />
-            <element signature="method#getSize#0;class#RentalStore#0" />
-            <element signature="method#linePrinter#0;class#RentalStore#0" />
-            <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
-            <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
-            <element signature="method#saveAsText#0;class#RentalStore#0" />
-            <element signature="method#loadFromText#0;class#RentalStore#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -706,15 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;field#bought#0;class#DVD#0" />
-            <element signature="docComment;field#dueBack#0;class#DVD#0" />
-            <element signature="docComment;field#title#0;class#DVD#0" />
-            <element signature="docComment;field#nameOfRenter#0;class#DVD#0" />
-            <element signature="method#DVD#1;class#DVD#0" />
-            <element signature="method#getCost#0;class#DVD#0" />
-            <element signature="method#checkReturnDate#0;class#DVD#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -722,11 +603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="21" />
-          <folding>
-            <element signature="method#RentDVDDialog#0;class#RentDVDDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentDVDDialog#0" />
-            <element signature="method#inputCheck#0;class#RentDVDDialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -748,18 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-          <folding>
-            <element signature="method#RentalStore#0;class#RentalStore#0" />
-            <element signature="method#add#0;class#RentalStore#0" />
-            <element signature="method#remove#0;class#RentalStore#0" />
-            <element signature="method#getElementAt#0;class#RentalStore#0" />
-            <element signature="method#getSize#0;class#RentalStore#0" />
-            <element signature="method#linePrinter#0;class#RentalStore#0" />
-            <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
-            <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
-            <element signature="method#saveAsText#0;class#RentalStore#0" />
-            <element signature="method#loadFromText#0;class#RentalStore#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -774,11 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Game#1;class#Game#0" />
-            <element signature="method#getCost#0;class#Game#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -793,15 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="docComment;field#bought#0;class#DVD#0" />
-            <element signature="docComment;field#dueBack#0;class#DVD#0" />
-            <element signature="docComment;field#title#0;class#DVD#0" />
-            <element signature="docComment;field#nameOfRenter#0;class#DVD#0" />
-            <element signature="method#DVD#1;class#DVD#0" />
-            <element signature="method#getCost#0;class#DVD#0" />
-            <element signature="method#checkReturnDate#0;class#DVD#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -816,11 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-          <folding>
-            <element signature="method#RentDVDDialog#0;class#RentDVDDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentDVDDialog#0" />
-            <element signature="method#inputCheck#0;class#RentDVDDialog#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -835,18 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="method#RentalStore#0;class#RentalStore#0" />
-            <element signature="method#add#0;class#RentalStore#0" />
-            <element signature="method#remove#0;class#RentalStore#0" />
-            <element signature="method#getElementAt#0;class#RentalStore#0" />
-            <element signature="method#getSize#0;class#RentalStore#0" />
-            <element signature="method#linePrinter#0;class#RentalStore#0" />
-            <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
-            <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
-            <element signature="method#saveAsText#0;class#RentalStore#0" />
-            <element signature="method#loadFromText#0;class#RentalStore#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -854,11 +687,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Game#1;class#Game#0" />
-            <element signature="method#getCost#0;class#Game#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -898,77 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Dialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="142" selection-start-line="142" selection-end-line="142" />
-          <folding>
-            <element signature="method#Dialog#0;class#Dialog#0" />
-            <element signature="method#checkDateRented#0;class#Dialog#0" />
-            <element signature="method#checkDateDue#0;class#Dialog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Game#1;class#Game#0" />
-            <element signature="method#getCost#0;class#Game#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="98" column="32" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
-          <folding>
-            <element signature="method#RentDVDDialog#0;class#RentDVDDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentDVDDialog#0" />
-            <element signature="method#inputCheck#0;class#RentDVDDialog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentGameDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="method#RentGameDialog#0;class#RentGameDialog#0" />
-            <element signature="method#actionPerformed#0;class#RentGameDialog#0" />
-            <element signature="method#inputCheck#0;class#RentGameDialog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/DVD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="130" selection-start-line="130" selection-end-line="130" />
-          <folding>
-            <element signature="docComment;field#bought#0;class#DVD#0" />
-            <element signature="docComment;field#dueBack#0;class#DVD#0" />
-            <element signature="docComment;field#title#0;class#DVD#0" />
-            <element signature="docComment;field#nameOfRenter#0;class#DVD#0" />
-            <element signature="method#DVD#1;class#DVD#0" />
-            <element signature="method#getCost#0;class#DVD#0" />
-            <element signature="method#checkReturnDate#0;class#DVD#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -980,51 +737,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#705#706#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaOptionPaneUI.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/src.zip!/javax/swing/AbstractListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/PlayerType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Dialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="372" column="59" lean-forward="true" selection-start-line="372" selection-start-column="59" selection-end-line="372" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/DVD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2955">
+          <caret line="216" lean-forward="true" selection-end-line="239" selection-end-column="1" />
+          <folding>
+            <element signature="method#DVD#0;class#DVD#0" />
+            <element signature="e#4925#4926#0" expanded="true" />
+            <element signature="e#4973#4974#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="77" column="6" lean-forward="true" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="207" selection-start-line="207" selection-end-line="207" />
-          <folding>
-            <element signature="method#RentalStore#0;class#RentalStore#0" />
-            <element signature="method#add#0;class#RentalStore#0" />
-            <element signature="method#remove#0;class#RentalStore#0" />
-            <element signature="method#getElementAt#0;class#RentalStore#0" />
-            <element signature="method#getSize#0;class#RentalStore#0" />
-            <element signature="method#linePrinter#0;class#RentalStore#0" />
-            <element signature="method#saveAsSerializable#0;class#RentalStore#0" />
-            <element signature="method#loadFromSerializable#0;class#RentalStore#0" />
-            <element signature="method#saveAsText#0;class#RentalStore#0" />
-            <element signature="method#loadFromText#0;class#RentalStore#0" />
-          </folding>
+        <state relative-caret-position="77">
+          <caret line="478" column="53" lean-forward="true" selection-start-line="478" selection-start-column="53" selection-end-line="478" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentalStoreGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="203" column="55" lean-forward="true" selection-start-line="203" selection-start-column="55" selection-end-line="203" selection-end-column="55" />
+        <state relative-caret-position="122">
+          <caret line="455" column="66" lean-forward="true" selection-start-line="455" selection-start-column="66" selection-end-line="455" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentDVDDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="228" column="40" lean-forward="true" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
           <folding>
-            <element signature="docComment;field#menus#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#fileMenu#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#openSerItem#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#list#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#JListArea#0;class#RentalStoreGUI#0" />
-            <element signature="docComment;field#scrollList#0;class#RentalStoreGUI#0" />
-            <element signature="method#RentalStoreGUI#0;class#RentalStoreGUI#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;field#unit#0;class#RentDVDDialog#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rentalStorePrj/RentGameDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="271" column="66" lean-forward="true" selection-start-line="271" selection-start-column="66" selection-end-line="271" selection-end-column="66" />
         </state>
       </provider>
     </entry>

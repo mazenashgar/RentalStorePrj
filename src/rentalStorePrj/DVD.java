@@ -42,7 +42,6 @@ public class DVD implements Serializable {
     /** Final double late fee for a DVD */
     private final double DVD_LATE_FEE = 2.00;
 
-
     /******************************************************************
      * Constructor for the DVD Class
      *****************************************************************/
@@ -68,7 +67,6 @@ public class DVD implements Serializable {
 
     /******************************************************************
      * Method that returns when the DVD was rented.
-     *
      * @return bought - the date DVD was rented
      *****************************************************************/
     public Date getBought() {
@@ -77,7 +75,6 @@ public class DVD implements Serializable {
 
     /******************************************************************
      * Method that sets the date rented.
-     *
      * @param bought - the date the DVD was rented
      *****************************************************************/
     public void setBought(Date bought) {
@@ -86,7 +83,6 @@ public class DVD implements Serializable {
 
     /******************************************************************
      * Method that returns when the DVD is due.
-     *
      * @return dueback - the date the DVD is due by to avoid a fee.
      *****************************************************************/
     public Date getDueBack() {
@@ -95,7 +91,6 @@ public class DVD implements Serializable {
 
     /******************************************************************
      * A Method that sets when the DVD is due back by.
-     *
      * @param dueBack - sets the date the DVD is due.
      *****************************************************************/
     public void setDueBack(Date dueBack) {
@@ -104,7 +99,6 @@ public class DVD implements Serializable {
 
     /******************************************************************
      * A Method that returns the DVD title's name.
-     *
      * @return title - A string with the title of the DVD.
      *****************************************************************/
     public String getTitle() {
@@ -113,7 +107,6 @@ public class DVD implements Serializable {
 
     /******************************************************************
      * Method that sets the title of the DVD
-     *
      * @param title - sets the name of the DVD
      *****************************************************************/
     public void setTitle(String title) {
@@ -122,7 +115,6 @@ public class DVD implements Serializable {
 
     /******************************************************************
      * Method that gets the name of the renter.
-     *
      * @return nameOfRenter - name of the person who rented the DVD
      *****************************************************************/
     public String getNameOfRenter() {
@@ -131,7 +123,6 @@ public class DVD implements Serializable {
 
     /******************************************************************
      * Method that sets the name of the renter.
-     *
      * @param nameOfRenter - name of the person who rented the DVD
      *****************************************************************/
     public void setNameOfRenter(String nameOfRenter) {
@@ -158,7 +149,6 @@ public class DVD implements Serializable {
         if (dateReturned.after(dueDate)){
             total += DVD_LATE_FEE;
         }
-
         return total;
     }
 
@@ -186,7 +176,6 @@ public class DVD implements Serializable {
         //Returns false if the month is greater than 12 or less than 1
         else if(monthReturned > 12 || monthReturned < 1){
             return false;
-
         }
 
         //Returns false if the day is greater than 31 or less than 1
@@ -204,8 +193,6 @@ public class DVD implements Serializable {
         //Tries to parse the date returned
         try {
             returnDate = DATE_FORMAT.parse(dateReturned);
-
-
         }
 
         //Returns false if the program cannot parse the date returned
@@ -251,4 +238,3 @@ public class DVD implements Serializable {
         return string;
     }
 }
-

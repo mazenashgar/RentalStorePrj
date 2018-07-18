@@ -20,11 +20,6 @@ public class RentGameDialog  extends Dialog implements ActionListener {
     /** Game object used in saving player entered game Info*/
     private Game unit;
 
-    /** The console the renter rented the game for*/
-    private PlayerType player;
-
-    //private JComboBox playerOptions;
-
     /** Used to display the playerType*/
     private JTextField console;
 
@@ -35,7 +30,7 @@ public class RentGameDialog  extends Dialog implements ActionListener {
      *
      *@param parent - A Jframe that holds the display
      *@param d - A Game thats text will be displayed
-     ******************************************************************/
+     *****************************************************************/
     public RentGameDialog(JFrame parent, Game d) {
 
         // Calls the parent class and create a 'modal' dialog
@@ -69,10 +64,6 @@ public class RentGameDialog  extends Dialog implements ActionListener {
         textPanel.add(new JLabel("Title of Game:"));
         titleTxt = new JTextField("Super Mario III", 30);
         textPanel.add(titleTxt);
-
-        //textPanel.add(new JLabel("Player Type;;"));
-        //playerOptions = new JComboBox<Enum>(PlayerType.values());
-        //textPanel.add(playerOptions);
 
         // Creates a text panel to enter the console rented on
         textPanel.add(new JLabel("Console:"));
@@ -136,7 +127,6 @@ public class RentGameDialog  extends Dialog implements ActionListener {
              object
              */
             closeStatus = inputCheck();
-
         }
 
         //If the cancel button is clicked it cancel the input
@@ -195,8 +185,6 @@ public class RentGameDialog  extends Dialog implements ActionListener {
                     "Please enter renter's name",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-
-
         }
 
         /*Return false if the game title is empty and displays an
@@ -208,8 +196,6 @@ public class RentGameDialog  extends Dialog implements ActionListener {
                     "Please enter the title",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-
-
         }
 
         /*Returns false if the date is empty and displays an
@@ -221,8 +207,6 @@ public class RentGameDialog  extends Dialog implements ActionListener {
                     "Please enter the date rented on",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-
-
         }
 
         /*Returns false if the due date is empty and displays an
@@ -234,8 +218,6 @@ public class RentGameDialog  extends Dialog implements ActionListener {
                     "Please enter the due back date",
                     "ERROR", JOptionPane.ERROR_MESSAGE, icon);
             return false;
-
-
         }
 
 
@@ -254,8 +236,6 @@ public class RentGameDialog  extends Dialog implements ActionListener {
 
             unit.setNameOfRenter(name);
             unit.setTitle(title);
-            //player = (PlayerType) playerOptions.getSelectedItem();
-            //unit.setPlayer(player);
             PlayerType p;
 
             //Tries to parse the console name

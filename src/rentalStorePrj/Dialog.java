@@ -15,16 +15,16 @@ import java.util.GregorianCalendar;
  *********************************************************************/
 public class Dialog extends JDialog {
 
-    /** JTextFeild used to display the title */
+    /** JTextField used to display the title */
     protected JTextField titleTxt;
 
-    /** JTextFeild used for display the renters name */
+    /** JTextField used for display the renters name */
     protected JTextField renterTxt;
 
-    /** JTextFeild used to display rented on date */
+    /** JTextField used to display rented on date */
     protected JTextField rentedOnTxt;
 
-    /** JTextFeild used to display due back date */
+    /** JTextField used to display due back date */
     protected JTextField DueBackTxt;
 
     /** JButton used to confirm inputed Dialog */
@@ -36,7 +36,7 @@ public class Dialog extends JDialog {
     /** Boolean used to check if dialog is correct */
     protected boolean closeStatus;
 
-    /** SimpleDateFormat sets the how the date is formated*/
+    /** SimpleDateFormat sets the how the date is formatted*/
     protected SimpleDateFormat DATE_FORMAT
             = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -69,6 +69,8 @@ public class Dialog extends JDialog {
      * @param dateRented - a string with the user entered rental date
      * @return true or false depending if the date rented is
      * correctly formatted and the date exists.
+     * @throws NumberFormatException if the user enters a date with
+     * more than 2 "/"
      *****************************************************************/
     protected boolean checkDateRented(String dateRented) {
 
@@ -90,6 +92,10 @@ public class Dialog extends JDialog {
             monthRented = Integer.parseInt(s[0]);
             dayRented = Integer.parseInt(s[1]);
             yearRented = Integer.parseInt(s[2]);
+
+            if(s.length > 3){
+                throw new NumberFormatException();
+            }
 
             /* Catches when the user enters non-numbers and displays
             an error message
@@ -200,7 +206,7 @@ public class Dialog extends JDialog {
             }
         }
 
-        // Returns true if the date is properly formated and exists
+        // Returns true if the date is properly formatted and exists
         return true;
     }
 
@@ -214,6 +220,7 @@ public class Dialog extends JDialog {
      * @return true or false depending on if the date rented is before
      * the due date, the due date is properly formatted, and the date
      * exists.
+     * @throws if the user enters a date with more than 2 "/"
      *****************************************************************/
     protected boolean checkDateDue(String dateDue, String dateRented) {
 
@@ -230,6 +237,10 @@ public class Dialog extends JDialog {
             monthDue = Integer.parseInt(s[0]);
             dayDue = Integer.parseInt(s[1]);
             yearDue = Integer.parseInt(s[2]);
+
+            if(s.length > 3){
+                throw new NumberFormatException();
+            }
 
             /* Catches an errors when the user enters non-numbers and
              displays an error message

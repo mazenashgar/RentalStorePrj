@@ -16,7 +16,7 @@ import java.util.Locale;
  *to rent and return games and DVDs through a graphical interface. It
  *allows the users to Save and load lists of games and DVD from
  *serialized files. It allows the user to view how late the DVDs and
- *games listed on the GUI are on a user inputed date.
+ *games listed on the GUI are on a user inputted date.
  *
  *@author Mazen Ashgar and Max Carson
  *@version 6/30/2018
@@ -142,6 +142,9 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
         scrollList = new JScrollPane(JListArea);
         add(scrollList);
 
+        //Allow the user to only select one unit at a time
+        JListArea.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
         //Sets the title
         setTitle("Rental Store");
 
@@ -230,7 +233,8 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 
             //This saves the user selected file name to a string
             if (status == JFileChooser.APPROVE_OPTION) {
-                String filename = chooser.getSelectedFile().getAbsolutePath();
+                String filename = chooser.getSelectedFile().
+                        getAbsolutePath();
 
                 //This saves list to the user selected file
                 if (saveTextItem == e.getSource())
@@ -280,7 +284,7 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
     }
 
     /******************************************************************
-     *A method that Finds out if lists items are late on a user inputed
+     *A method that finds if lists items are late on a user inputted
      *date and displays how late the DVD items and game items
      *are on that date.
      *****************************************************************/
@@ -399,8 +403,6 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
                 if(dialog.checkDateRented(inputDate)){
                     Date newDate = df.parse(inputDate);
                     date.setTime(newDate);
-
-
                 }
 
                 //Prompts the user to a new date if date is invalid
@@ -460,7 +462,6 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                     "Please select a unit to return it", "Error",
                     JOptionPane.ERROR_MESSAGE, icon);
-
         }
 
         /*Return the method if there is a problem with how the date is
