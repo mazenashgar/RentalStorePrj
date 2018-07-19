@@ -477,7 +477,7 @@ public class RentalStore extends AbstractListModel {
                 info = linePrinter(i);
 
                 //add the information to the lateList
-                lateList.add(i, "" + diff + " Day(s) late for:"
+                lateList.add( "" + diff + " Day(s) late for:"
                         + info.substring(5));
             }
         }
